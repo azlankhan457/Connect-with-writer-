@@ -32,6 +32,19 @@ export default function ReviewsSlider({ eyebrow, title, items }) {
     setActive(closest);
   }
 
+  // Scrolls the track only (its own scrollLeft), never the page — unlike
+  // scrollIntoView, which can also drag the whole document's vertical
+  // scroll position if it decides the card "isn't visible" enough.
+  function scrollTrackToIndex(index) {
+    const track = trackRef.current;
+    const card = cardRefs.current[index];
+    if (!track || !card) return;
+    const trackRect = track.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const delta = cardRect.left + cardRect.width / 2 - (trackRect.left + trackRect.width / 2);
+    track.scrollTo({ left: track.scrollLeft + delta, behavior: "smooth" });
+  }
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -50,7 +63,7 @@ export default function ReviewsSlider({ eyebrow, title, items }) {
     if (isPaused || items.length <= 1) return;
     const id = setInterval(() => {
       const next = (active + 1) % items.length;
-      cardRefs.current[next]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      scrollTrackToIndex(next);
     }, 1000);
     return () => clearInterval(id);
   }, [active, isPaused, items.length]);
@@ -99,13 +112,7 @@ export default function ReviewsSlider({ eyebrow, title, items }) {
               aria-label={`Go to slide ${i + 1}`}
               className={i === active ? "is-active" : ""}
               key={review.name}
-              onClick={() =>
-                cardRefs.current[i]?.scrollIntoView({
-                  behavior: "smooth",
-                  inline: "center",
-                  block: "nearest",
-                })
-              }
+              onClick={() => scrollTrackToIndex(i)}
               type="button"
             />
           ))}
