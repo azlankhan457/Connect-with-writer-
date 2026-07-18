@@ -4,7 +4,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
 
 const PORTFOLIO_BOOKS = [
-  { title: "Now Available", author: "Book Writing", genre: "Business", gradient: "linear-gradient(155deg,#4a3a1d,#241c0d)" },
+  { title: "Now Available", author: "Connect with Writer", genre: "Business", gradient: "linear-gradient(155deg,#4a3a1d,#241c0d)" },
   { title: "The Harbor Line", author: "N. Castillo", genre: "Fiction", gradient: "linear-gradient(155deg,#1d3a4a,#0d1c24)" },
   { title: "Paper Anniversary", author: "M. Lindqvist", genre: "Romance", gradient: "linear-gradient(155deg,#5a2a2a,#280f0f)" },
   { title: "Dead Reckoning", author: "A. Whitcombe", genre: "Thriller", gradient: "linear-gradient(155deg,#202c3a,#0d141d)" },
@@ -96,7 +96,7 @@ export default function Page() {
         <div className="book__cover">
           <span className="book__genre">Business</span>
           <span className="book__title">Now Available</span>
-          <span className="book__author">Book Writing</span>
+          <span className="book__author">Connect with Writer</span>
         </div>
       </div>
     </div>
@@ -241,8 +241,8 @@ export default function Page() {
       </div>
 
       <div className="feature-books" aria-hidden="true">
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#4a3a1d,#241c0d)"}}><div className="book__cover"><span className="book__genre">Business</span><span className="book__title">Published & Live</span><span className="book__author">Book Writing</span></div></div>
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#1d3a4a,#0d1c24)"}}><div className="book__cover"><span className="book__genre">Fiction</span><span className="book__title">On Every Shelf</span><span className="book__author">Book Writing</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#4a3a1d,#241c0d)"}}><div className="book__cover"><span className="book__genre">Business</span><span className="book__title">Published & Live</span><span className="book__author">Connect with Writer</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#1d3a4a,#0d1c24)"}}><div className="book__cover"><span className="book__genre">Fiction</span><span className="book__title">On Every Shelf</span><span className="book__author">Connect with Writer</span></div></div>
       </div>
 
       <div className="feature-col right">

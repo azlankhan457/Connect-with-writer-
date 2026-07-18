@@ -20,7 +20,7 @@ const REVIEWS = [
   { stars: 5, quote: "From outline to final formatting, the whole team made publishing my first book feel achievable instead of overwhelming.", initials: "DK", name: "Daniel K.", tag: "Nonfiction Author" },
 ];
 const FAQS = [
-  { q: "What does a book writing service include?", a: "A full book writing service typically includes a discovery consultation, ghostwriting or co-writing of the full manuscript, professional editing and proofreading, cover design and interior formatting, and guidance through self-publishing or traditional submission. At Book Writing, every package includes unlimited revisions and direct access to your writer throughout the process." },
+  { q: "What does a book writing service include?", a: "A full book writing service typically includes a discovery consultation, ghostwriting or co-writing of the full manuscript, professional editing and proofreading, cover design and interior formatting, and guidance through self-publishing or traditional submission. At Connect with Writer, every package includes unlimited revisions and direct access to your writer throughout the process." },
   { q: "How much does it cost to hire a ghostwriter?", a: "Ghostwriting costs vary based on book length, research depth, and genre, typically ranging from a few thousand dollars for a short nonfiction book to tens of thousands for a fully researched memoir or novel. We provide a custom quote after a free consultation." },
   { q: "How long does it take to write a book?", a: "Most full-length books take three to six months to write from outline to final draft, depending on length, genre, and how much research is required." },
   { q: "Who owns the rights to my book once it's written?", a: "You retain 100% ownership of your manuscript, copyright, and royalties once it's written. Our writers work under a confidentiality and ownership-transfer agreement." },
@@ -77,7 +77,7 @@ export default function Page() {
 {/*============================ FOLD 1 — Proof stats strip ============================ */}
 <section className="press">
   <div className="container">
-    <p className="press__label">Book Writing By The Numbers</p>
+    <p className="press__label">Connect with Writer By The Numbers</p>
     <div className="press__row">
       <span>250+ Books Written</span>
       <span>30+ Genres Covered</span>
@@ -229,7 +229,7 @@ export default function Page() {
 <section className="section feature-band">
   <div className="container">
     <span className="badge-pill"><svg style={{width: "16px", height: "16px"}}><use href="#i-bulb"></use></svg>Writer&apos;s Block? No Problem.</span>
-    <h2>We&apos;re the Book Writing Company That Works When You&apos;re Stuck</h2>
+    <h2>We&apos;re Connect with Writer — We Work When You&apos;re Stuck</h2>
     <p className="lede">Most people don&apos;t stall on having a story — they stall on getting it onto the page in a way that actually sounds right. That&apos;s the exact problem our writers are built to solve.</p>
     <em className="accent-italic">Every great book starts with someone willing to help you finish it.</em>
 
@@ -241,8 +241,8 @@ export default function Page() {
       </div>
 
       <div className="feature-books" aria-hidden="true">
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#3a2c20,#1d140d)"}}><div className="book__cover"><span className="book__genre">Nonfiction</span><span className="book__title">Your Book Here</span><span className="book__author">Book Writing</span></div></div>
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#1d3a4a,#0d1c24)"}}><div className="book__cover"><span className="book__genre">Fiction</span><span className="book__title">Your Story, Told Well</span><span className="book__author">Book Writing</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#3a2c20,#1d140d)"}}><div className="book__cover"><span className="book__genre">Nonfiction</span><span className="book__title">Your Book Here</span><span className="book__author">Connect with Writer</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#1d3a4a,#0d1c24)"}}><div className="book__cover"><span className="book__genre">Fiction</span><span className="book__title">Your Story, Told Well</span><span className="book__author">Connect with Writer</span></div></div>
       </div>
 
       <div className="feature-col right">

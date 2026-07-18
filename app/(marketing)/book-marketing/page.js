@@ -2,9 +2,10 @@ import PortfolioSlider from "@/components/PortfolioSlider";
 import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
+import TiltCard from "@/components/TiltCard";
 
 const PORTFOLIO_BOOKS = [
-  { title: "Bestseller Bound", author: "Book Writing", genre: "Fiction", gradient: "linear-gradient(155deg,#5a2a2a,#280f0f)" },
+  { title: "Bestseller Bound", author: "Connect with Writer", genre: "Fiction", gradient: "linear-gradient(155deg,#5a2a2a,#280f0f)" },
   { title: "The Margin Method", author: "T. Achebe", genre: "Business", gradient: "linear-gradient(155deg,#4a3a1d,#241c0d)" },
   { title: "Milo's Loud Feelings", author: "N. Farah", genre: "Children's", gradient: "linear-gradient(155deg,#5a2a45,#280f1e)" },
   { title: "No Clean Exit", author: "R. Doyle", genre: "Thriller", gradient: "linear-gradient(155deg,#2c2438,#13101c)" },
@@ -92,13 +93,15 @@ export default function Page() {
 <section className="section" id="intro">
   <div className="container split">
     <div className="split-art">
-      <div className="book book--lg" style={{"--book-bg": "linear-gradient(155deg,#5a2a2a,#280f0f)"}}>
-        <div className="book__cover">
-          <span className="book__genre">Fiction</span>
-          <span className="book__title">Bestseller Bound</span>
-          <span className="book__author">Book Writing</span>
+      <TiltCard>
+        <div className="book book--lg" style={{"--book-bg": "linear-gradient(155deg,#5a2a2a,#280f0f)"}}>
+          <div className="book__cover">
+            <span className="book__genre">Fiction</span>
+            <span className="book__title">Bestseller Bound</span>
+            <span className="book__author">Connect with Writer</span>
+          </div>
         </div>
-      </div>
+      </TiltCard>
     </div>
     <div className="split-copy">
       <p className="eyebrow">Market Your Book</p>
@@ -241,8 +244,8 @@ export default function Page() {
       </div>
 
       <div className="feature-books" aria-hidden="true">
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#5a2a2a,#280f0f)"}}><div className="book__cover"><span className="book__genre">Fiction</span><span className="book__title">Launch Week Live</span><span className="book__author">Book Writing</span></div></div>
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#4a3a1d,#241c0d)"}}><div className="book__cover"><span className="book__genre">Business</span><span className="book__title">Momentum Building</span><span className="book__author">Book Writing</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#5a2a2a,#280f0f)"}}><div className="book__cover"><span className="book__genre">Fiction</span><span className="book__title">Launch Week Live</span><span className="book__author">Connect with Writer</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#4a3a1d,#241c0d)"}}><div className="book__cover"><span className="book__genre">Business</span><span className="book__title">Momentum Building</span><span className="book__author">Connect with Writer</span></div></div>
       </div>
 
       <div className="feature-col right">

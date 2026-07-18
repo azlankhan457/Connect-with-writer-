@@ -241,8 +241,8 @@ export default function Page() {
       </div>
 
       <div className="feature-books" aria-hidden="true">
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#5a2a45,#280f1e)"}}><div className="book__cover"><span className="book__genre">Picture Book</span><span className="book__title">Your Story, Illustrated</span><span className="book__author">Book Writing</span></div></div>
-        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#4a3a1d,#241c0d)"}}><div className="book__cover"><span className="book__genre">Chapter Book</span><span className="book__title">Ready for Story Time</span><span className="book__author">Book Writing</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#5a2a45,#280f1e)"}}><div className="book__cover"><span className="book__genre">Picture Book</span><span className="book__title">Your Story, Illustrated</span><span className="book__author">Connect with Writer</span></div></div>
+        <div className="book" style={{"--book-bg": "linear-gradient(155deg,#4a3a1d,#241c0d)"}}><div className="book__cover"><span className="book__genre">Chapter Book</span><span className="book__title">Ready for Story Time</span><span className="book__author">Connect with Writer</span></div></div>
       </div>
 
       <div className="feature-col right">

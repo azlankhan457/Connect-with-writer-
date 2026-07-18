@@ -72,13 +72,13 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
       <div className="container header-inner">
-        <Link aria-label="Book Writing — home" className="brand" href="/">
+        <Link aria-label="Connect with Writer — home" className="brand" href="/">
           <svg className="brand__mark">
             <use href="#i-book-mark"></use>
           </svg>
           <span className="brand__word">
-            <b>Book</b>
-            <span>Writing</span>
+            <b>Connect</b>
+            <span>with Writer</span>
           </span>
         </Link>
 

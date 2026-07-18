@@ -151,7 +151,117 @@ export default function IconSprite() {
       <path d="M7.7 8 L19 19"></path>
       <path d="M7.7 16 L19 5"></path>
       </symbol>
-    </defs>
+      <symbol fill="none" id="i-settings" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3.2"></circle>
+      <path d="M19.4 13.5 A7.9 7.9 0 0 0 19.5 10.4 L21.3 8.9 L19.6 6 L17.4 6.8 A7.9 7.9 0 0 0 14.7 5.2 L14.3 2.9 H9.7 L9.3 5.2 A7.9 7.9 0 0 0 6.6 6.8 L4.4 6 L2.7 8.9 L4.5 10.4 A7.9 7.9 0 0 0 4.6 13.5 L2.8 15.1 L4.5 18 L6.7 17.1 A7.9 7.9 0 0 0 9.4 18.7 L9.8 21 H14.4 L14.8 18.7 A7.9 7.9 0 0 0 17.5 17.1 L19.7 18 L21.4 15.1 Z"></path>
+      </symbol>
+      <symbol fill="none" id="i-credit-card" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <rect height="14" rx="2.2" width="19" x="2.5" y="5"></rect>
+      <path d="M2.5 9.5 H21.5"></path>
+      <path d="M6 14.5 H10.5"></path>
+      </symbol>
+      <symbol fill="none" id="i-bar-chart" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M5 20 V11"></path>
+      <path d="M12 20 V4"></path>
+      <path d="M19 20 V14"></path>
+      <path d="M3 20 H21"></path>
+      </symbol>
+      <symbol fill="none" id="i-terminal" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <rect height="16" rx="2" width="19" x="2.5" y="4"></rect>
+      <path d="M6.5 9 L10 12 L6.5 15"></path>
+      <path d="M12.5 15 H17.5"></path>
+      </symbol>
+      <symbol fill="none" id="i-folder" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M3 6.5 C3 5.7 3.7 5 4.5 5 H9.5 L11.5 7.5 H19.5 C20.3 7.5 21 8.2 21 9 V17.5 C21 18.3 20.3 19 19.5 19 H4.5 C3.7 19 3 18.3 3 17.5 Z"></path>
+      </symbol>
+      <symbol fill="none" id="i-grid" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <rect height="7.5" rx="1.4" width="7.5" x="3" y="3"></rect>
+      <rect height="7.5" rx="1.4" width="7.5" x="13.5" y="3"></rect>
+      <rect height="7.5" rx="1.4" width="7.5" x="3" y="13.5"></rect>
+      <rect height="7.5" rx="1.4" width="7.5" x="13.5" y="13.5"></rect>
+      </symbol>
+      <symbol fill="none" id="i-help-circle" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9.3"></circle>
+      <path d="M9.3 9.3 C9.3 7.6 10.6 6.5 12 6.5 C13.5 6.5 14.7 7.5 14.7 9 C14.7 11 12 11 12 13.3"></path>
+      <circle cx="12" cy="16.8" fill="currentColor" r=".3"></circle>
+      </symbol>
+      <symbol fill="none" id="i-globe" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9.3"></circle>
+      <path d="M2.7 12 H21.3"></path>
+      <path d="M12 2.7 C14.8 5.6 16.3 8.7 16.3 12 C16.3 15.3 14.8 18.4 12 21.3 C9.2 18.4 7.7 15.3 7.7 12 C7.7 8.7 9.2 5.6 12 2.7 Z"></path>
+      </symbol>
+      <symbol fill="none" id="i-plus" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M12 5 V19"></path>
+      <path d="M5 12 H19"></path>
+      </symbol>
+      <symbol fill="none" id="i-zap" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M13 2.5 L4.5 14 H11.5 L10.5 21.5 L19.5 10 H12.5 Z"></path>
+      </symbol>
+      <symbol fill="none" id="i-external" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M9 6 H6.5 C5.1 6 4 7.1 4 8.5 V17.5 C4 18.9 5.1 20 6.5 20 H15.5 C16.9 20 18 18.9 18 17.5 V15"></path>
+      <path d="M13 4 H20 V11"></path>
+      <path d="M20 4 L11.5 12.5"></path>
+      </symbol>
+      <symbol fill="none" id="i-trending-up" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M3 17 L9.5 10.5 L13.5 14.5 L21 6.5"></path>
+      <path d="M15 6.5 H21 V12.5"></path>
+      </symbol>
+      <symbol fill="none" id="i-wand" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M5 19 L16 8"></path>
+      <path d="M17.5 3 V6.5"></path>
+      <path d="M15.7 4.7 H19.3"></path>
+      <path d="M20 9.5 V12"></path>
+      <path d="M18.7 10.7 H21.3"></path>
+      <path d="M8.5 16 V18.5"></path>
+      <path d="M7.2 17.2 H9.8"></path>
+      </symbol>
+      <symbol fill="none" id="i-chat" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M3.5 5.5 C3.5 4.4 4.4 3.5 5.5 3.5 H18.5 C19.6 3.5 20.5 4.4 20.5 5.5 V14.5 C20.5 15.6 19.6 16.5 18.5 16.5 H9 L5 20 V16.5 H5.5 C4.4 16.5 3.5 15.6 3.5 14.5 Z"></path>
+      </symbol>
+      <symbol fill="none" id="i-home" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M3.5 11 L12 4 L20.5 11"></path>
+      <path d="M5.5 9.5 V19 C5.5 19.6 6 20 6.5 20 H17.5 C18 20 18.5 19.6 18.5 19 V9.5"></path>
+      <path d="M10 20 V14.5 H14 V20"></path>
+      </symbol>
+      <symbol fill="none" id="i-eye" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M2 12 C4.5 7 8 4.5 12 4.5 C16 4.5 19.5 7 22 12 C19.5 17 16 19.5 12 19.5 C8 19.5 4.5 17 2 12 Z"></path>
+      <circle cx="12" cy="12" r="3.2"></circle>
+      </symbol>
+      <symbol fill="none" id="i-eye-off" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M3.5 3.5 L20.5 20.5"></path>
+      <path d="M10.6 5.1 C11 5 11.5 5 12 5 C16 5 19.5 7.5 22 12 C21.2 13.4 20.3 14.6 19.3 15.6"></path>
+      <path d="M6.6 6.6 C4.6 8 3.1 9.8 2 12 C4.5 16.5 8 19 12 19 C13.4 19 14.7 18.7 15.9 18.1"></path>
+      <path d="M9.9 10 C9.3 10.6 9 11.3 9 12 C9 13.7 10.3 15 12 15 C12.7 15 13.4 14.7 14 14.2"></path>
+      </symbol>
+      <symbol fill="none" id="i-copy" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <rect height="12" rx="2" width="12" x="8.5" y="8.5"></rect>
+      <path d="M15.5 8.5 V5.5 C15.5 4.4 14.6 3.5 13.5 3.5 H5.5 C4.4 3.5 3.5 4.4 3.5 5.5 V13.5 C3.5 14.6 4.4 15.5 5.5 15.5 H8.5"></path>
+      </symbol>
+      <symbol fill="none" id="i-key" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <circle cx="8" cy="15.5" r="4.5"></circle>
+      <path d="M11.3 12.2 L20 3.5"></path>
+      <path d="M16 7.5 L18.5 10"></path>
+      <path d="M13.2 10.3 L15.3 12.4"></path>
+      </symbol>
+      <symbol fill="none" id="i-trash" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <path d="M4 7 H20"></path>
+      <path d="M9 7 V4.6 C9 4 9.5 3.5 10.1 3.5 H13.9 C14.5 3.5 15 4 15 4.6 V7"></path>
+      <path d="M6.5 7 L7.3 19.2 C7.35 19.95 7.98 20.5 8.73 20.5 H15.27 C16.02 20.5 16.65 19.95 16.7 19.2 L17.5 7"></path>
+      <path d="M10.3 11 V16.5"></path>
+      <path d="M13.7 11 V16.5"></path>
+      </symbol>
+      <symbol fill="none" id="i-user-plus" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <circle cx="10" cy="8" r="3.6"></circle>
+      <path d="M3.5 20 C3.5 16.1 6.4 13.5 10 13.5 C11.1 13.5 12.1 13.7 13 14.2"></path>
+      <path d="M18.5 9.5 V15.5"></path>
+      <path d="M15.5 12.5 H21.5"></path>
+      </symbol>
+      <symbol fill="none" id="i-lock" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24">
+      <rect height="10" rx="2" width="15" x="4.5" y="10.5"></rect>
+      <path d="M7.5 10.5 V7.5 C7.5 5 9.5 3 12 3 C14.5 3 16.5 5 16.5 7.5 V10.5"></path>
+      <circle cx="12" cy="15" fill="currentColor" r="1.4" stroke="none"></circle>
+      </symbol>
+      </defs>
     </svg>
   );
 }

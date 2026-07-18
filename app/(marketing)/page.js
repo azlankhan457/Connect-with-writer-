@@ -52,7 +52,7 @@ const REVIEWS = [
 const FAQS = [
   {
     q: "What does a book writing service include?",
-    a: "A full book writing service typically includes a discovery consultation, ghostwriting or co-writing of the full manuscript, professional editing and proofreading, cover design and interior formatting, and guidance through self-publishing or traditional submission. At Book Writing, every package includes unlimited revisions and direct access to your writer throughout the process.",
+    a: "A full book writing service typically includes a discovery consultation, ghostwriting or co-writing of the full manuscript, professional editing and proofreading, cover design and interior formatting, and guidance through self-publishing or traditional submission. At Connect with Writer, every package includes unlimited revisions and direct access to your writer throughout the process.",
   },
   {
     q: "How much does it cost to hire a ghostwriter?",
@@ -179,7 +179,7 @@ export default function HomePage() {
       {/* Proof stats strip */}
       <section className="press">
         <div className="container">
-          <p className="press__label">Book Writing By The Numbers</p>
+          <p className="press__label">Connect with Writer By The Numbers</p>
           <div className="press__row">
             <span>250+ Books Written</span>
             <span>30+ Genres Covered</span>
@@ -424,7 +424,7 @@ export default function HomePage() {
             </svg>
             Writer&apos;s Block? No Problem.
           </span>
-          <h2>We&apos;re the Book Writing Company That Works When You&apos;re Stuck</h2>
+          <h2>We&apos;re Connect with Writer — We Work When You&apos;re Stuck</h2>
           <p className="lede">
             Most people don&apos;t stall on having a story — they stall on getting it onto the page in a way that
             actually sounds right. That&apos;s the exact problem our writers are built to solve.

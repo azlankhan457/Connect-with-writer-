@@ -18,7 +18,7 @@ const ROUTES = [
 ];
 
 export default function sitemap() {
-  const base = "https://www.bookwriting.com";
+  const base = "https://www.connectwithwriter.com";
   const now = new Date();
 
   return ROUTES.map((route) => ({

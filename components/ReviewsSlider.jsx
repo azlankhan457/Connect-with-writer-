@@ -11,6 +11,7 @@ export default function ReviewsSlider({ eyebrow, title, items }) {
   const trackRef = useRef(null);
   const cardRefs = useRef([]);
   const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   function updateActive() {
     const track = trackRef.current;
@@ -44,6 +45,16 @@ export default function ReviewsSlider({ eyebrow, title, items }) {
     return () => track.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Auto-advance every 1s, pausing while the cursor is over the carousel.
+  useEffect(() => {
+    if (isPaused || items.length <= 1) return;
+    const id = setInterval(() => {
+      const next = (active + 1) % items.length;
+      cardRefs.current[next]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [active, isPaused, items.length]);
+
   return (
     <div className="container">
       <div className="section-head center">
@@ -52,7 +63,11 @@ export default function ReviewsSlider({ eyebrow, title, items }) {
         </p>
         <h2>{title}</h2>
       </div>
-      <div className="review-slider">
+      <div
+        className="review-slider"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div className="review-track" ref={trackRef}>
           {items.map((review, i) => (
             <div

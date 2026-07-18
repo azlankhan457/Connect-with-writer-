@@ -7,33 +7,33 @@ export default function SiteFooter() {
     <footer className="site-footer">
       <div className="container footer-top">
         <div className="footer-brand">
-          <Link aria-label="Book Writing — home" className="brand" href="/">
+          <Link aria-label="Connect with Writer — home" className="brand" href="/">
             <svg className="brand__mark" style={{ color: "var(--orange)" }}>
               <use href="#i-book-mark"></use>
             </svg>
             <span className="brand__word">
-              <b>Book</b>
-              <span>Writing</span>
+              <b>Connect</b>
+              <span>with Writer</span>
             </span>
           </Link>
           <p>Turning ideas into books worth reading — one manuscript at a time.</p>
           <div className="social-row">
-            <a aria-label="Facebook" href="https://www.facebook.com/bookwriting">
+            <a aria-label="Facebook" href="https://www.facebook.com/connectwithwriter">
               <svg>
                 <use href="#i-facebook"></use>
               </svg>
             </a>
-            <a aria-label="Instagram" href="https://www.instagram.com/bookwriting">
+            <a aria-label="Instagram" href="https://www.instagram.com/connectwithwriter">
               <svg>
                 <use href="#i-instagram"></use>
               </svg>
             </a>
-            <a aria-label="LinkedIn" href="https://www.linkedin.com/company/bookwriting">
+            <a aria-label="LinkedIn" href="https://www.linkedin.com/company/connectwithwriter">
               <svg>
                 <use href="#i-linkedin"></use>
               </svg>
             </a>
-            <a aria-label="Pinterest" href="https://www.pinterest.com/bookwriting">
+            <a aria-label="Pinterest" href="https://www.pinterest.com/connectwithwriter">
               <svg>
                 <use href="#i-pinterest"></use>
               </svg>
@@ -105,7 +105,7 @@ export default function SiteFooter() {
               <svg>
                 <use href="#i-mail"></use>
               </svg>
-              <a href="mailto:hello@bookwriting.com">hello@bookwriting.com</a>
+              <a href="mailto:hello@connectwithwriter.com">hello@connectwithwriter.com</a>
             </li>
             <li className="contact-line">
               <svg>
@@ -146,7 +146,7 @@ export default function SiteFooter() {
 
       <div className="container footer-bottom">
         <span>
-          © <span>{year}</span> Book Writing. All rights reserved.
+          © <span>{year}</span> Connect with Writer. All rights reserved.
         </span>
         <div className="legal-links">
           <Link href="/privacy-policy">Privacy Policy</Link>

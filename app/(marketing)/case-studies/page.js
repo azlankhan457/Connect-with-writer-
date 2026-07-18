@@ -46,7 +46,7 @@ const CASE_STUDIES = [
       { num: "14K+", label: "Pre-orders" },
     ],
     quote:
-      "My editor kept telling me my drafts were too clinical. My Book Writing writer found the exact voice I'd been reaching for but couldn't quite grasp.",
+      "My editor kept telling me my drafts were too clinical. My Connect with Writer writer found the exact voice I'd been reaching for but couldn't quite grasp.",
     quoteAuthor: "Dr. Rachel Obi",
     writer: "Marcus Reynolds",
   },
@@ -61,7 +61,7 @@ const CASE_STUDIES = [
       { num: "78K", label: "Word Count" },
       { num: "3", label: "Agent Requests" },
     ],
-    quote: "I've wanted to write this book since I was 35. At 67, it's finally real. You're never too late — that's what Book Writing taught me.",
+    quote: "I've wanted to write this book since I was 35. At 67, it's finally real. You're never too late — that's what Connect with Writer taught me.",
     quoteAuthor: "R. Calder",
     writer: "Sofia Lara",
   },
@@ -214,8 +214,8 @@ export default function Page() {
                 </svg>
               </div>
               <p className="testi-quote">
-                &quot;I&apos;d tried two other ghostwriting services before Book Writing. Neither got my voice
-                right. Book Writing nailed it in the first chapter draft. The difference was that they actually
+                &quot;I&apos;d tried two other ghostwriting services before Connect with Writer. Neither got my voice
+                right. Connect with Writer nailed it in the first chapter draft. The difference was that they actually
                 listened before they wrote.&quot;
               </p>
               <div className="testi-author">
@@ -245,7 +245,7 @@ export default function Page() {
                 </svg>
               </div>
               <p className="testi-quote">
-                &quot;As a busy CEO, I had the content but not the time. My Book Writing writer extracted
+                &quot;As a busy CEO, I had the content but not the time. My Connect with Writer writer extracted
                 everything through interviews and structured it brilliantly. The book has done more for my
                 speaking career than anything else I&apos;ve tried.&quot;
               </p>

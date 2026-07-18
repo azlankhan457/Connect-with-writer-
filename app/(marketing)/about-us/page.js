@@ -7,7 +7,7 @@ export default function Page() {
 <section className="page-hero">
   <div className="container">
     <div className="page-hero-inner reveal">
-      <p className="eyebrow">About Book Writing</p>
+      <p className="eyebrow">About Connect with Writer</p>
       <h1>We Exist to Help Every Author Tell Their Story — Brilliantly</h1>
       <p className="lede">Since 2015, we&apos;ve partnered with hundreds of authors to turn raw ideas into polished, publish-ready books. We&apos;re not a factory — we&apos;re a team of dedicated writers, editors, and creatives who genuinely care about every manuscript we touch.</p>
     </div>
@@ -90,7 +90,7 @@ export default function Page() {
           <div className="tl-dot"></div>
           <div className="tl-content" style={{paddingLeft: "1rem"}}>
             <h4>Founded with a Single Mission</h4>
-            <p>Book Writing launches with a small team of 3 writers and a simple belief: every author deserves a professional partner. Our first 10 books are completed in the first year.</p>
+            <p>Connect with Writer launches with a small team of 3 writers and a simple belief: every author deserves a professional partner. Our first 10 books are completed in the first year.</p>
           </div>
         </div>
       </div>
@@ -168,7 +168,7 @@ export default function Page() {
         <div className="team-card__body">
           <div className="team-card__name">Daniel Koh</div>
           <div className="team-card__role">Editor-in-Chief</div>
-          <p className="team-card__bio">20 years in publishing as a developmental and line editor. Worked with imprints at Penguin Random House and HarperCollins before joining Book Writing.</p>
+          <p className="team-card__bio">20 years in publishing as a developmental and line editor. Worked with imprints at Penguin Random House and HarperCollins before joining Connect with Writer.</p>
         </div>
       </div>
       <div className="team-card reveal">

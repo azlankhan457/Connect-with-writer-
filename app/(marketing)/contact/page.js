@@ -108,7 +108,7 @@ export default function Page() {
                     <div>
                       <div className="contact-detail__label">Email Us</div>
                       <div className="contact-detail__value">
-                        <a href="mailto:hello@bookwriting.com">hello@bookwriting.com</a>
+                        <a href="mailto:hello@connectwithwriter.com">hello@connectwithwriter.com</a>
                       </div>
                     </div>
                   </div>
@@ -158,17 +158,17 @@ export default function Page() {
                   Follow Us
                 </p>
                 <div className="social-row">
-                  <a aria-label="Facebook" href="https://www.facebook.com/bookwriting">
+                  <a aria-label="Facebook" href="https://www.facebook.com/connectwithwriter">
                     <svg>
                       <use href="#i-facebook"></use>
                     </svg>
                   </a>
-                  <a aria-label="Instagram" href="https://www.instagram.com/bookwriting">
+                  <a aria-label="Instagram" href="https://www.instagram.com/connectwithwriter">
                     <svg>
                       <use href="#i-instagram"></use>
                     </svg>
                   </a>
-                  <a aria-label="LinkedIn" href="https://www.linkedin.com/company/bookwriting">
+                  <a aria-label="LinkedIn" href="https://www.linkedin.com/company/connectwithwriter">
                     <svg>
                       <use href="#i-linkedin"></use>
                     </svg>

@@ -1,20 +1,11 @@
-"use client";
-
-import { useRef } from "react";
-
 /**
  * items: [{ title, author, genre, gradient }]
- * Horizontal book-cover slider with prev/next arrows (no dots), matching
- * the "Our Portfolio" section used across the site.
+ * Continuously auto-scrolling book-cover marquee (right to left), pausing
+ * on hover. The item list is duplicated so the loop is seamless.
  */
-export default function PortfolioSlider({ eyebrow, title, items }) {
-  const trackRef = useRef(null);
-
-  function scrollByAmount(dir) {
-    const track = trackRef.current;
-    if (!track) return;
-    track.scrollBy({ left: dir * 0.85 * track.clientWidth, behavior: "smooth" });
-  }
+export default function PortfolioSlider({ eyebrow, title, items, secondsPerItem = 4 }) {
+  const duration = items.length * secondsPerItem;
+  const loopItems = [...items, ...items];
 
   return (
     <div className="container">
@@ -23,23 +14,11 @@ export default function PortfolioSlider({ eyebrow, title, items }) {
           <p className="eyebrow">{eyebrow}</p>
           <h2>{title}</h2>
         </div>
-        <div className="slider-arrows">
-          <button aria-label="Previous" className="slider-arrow" onClick={() => scrollByAmount(-1)}>
-            <svg>
-              <use href="#i-arrow-left"></use>
-            </svg>
-          </button>
-          <button aria-label="Next" className="slider-arrow" onClick={() => scrollByAmount(1)}>
-            <svg>
-              <use href="#i-arrow-right"></use>
-            </svg>
-          </button>
-        </div>
       </div>
-      <div>
-        <div className="slider-track" ref={trackRef}>
-          {items.map((book) => (
-            <div className="slide" key={book.title}>
+      <div className="portfolio-marquee">
+        <div className="portfolio-marquee__track" style={{ "--marquee-duration": `${duration}s` }}>
+          {loopItems.map((book, i) => (
+            <div aria-hidden={i >= items.length || undefined} className="slide" key={`${book.title}-${i}`}>
               <div className="book" style={{ "--book-bg": book.gradient }}>
                 <div className="book__cover">
                   <span className="book__genre">{book.genre}</span>
