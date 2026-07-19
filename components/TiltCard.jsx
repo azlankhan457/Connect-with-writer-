@@ -18,6 +18,7 @@ export default function TiltCard({ children, className = "", maxTilt = 16 }) {
     if (frame.current) cancelAnimationFrame(frame.current);
     frame.current = requestAnimationFrame(() => {
       const rect = el.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
       const x = (e.clientX - rect.left) / rect.width; // 0 -> 1
       const y = (e.clientY - rect.top) / rect.height; // 0 -> 1
 
@@ -43,7 +44,7 @@ export default function TiltCard({ children, className = "", maxTilt = 16 }) {
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       ref={wrapRef}
-      style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+      style={{ willChange: "transform" }}
     >
       {children}
     </div>

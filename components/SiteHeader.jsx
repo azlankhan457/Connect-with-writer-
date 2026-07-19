@@ -72,7 +72,11 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
       <div className="container header-inner">
-        <Link aria-label="Connect with Writer — home" className="brand" href="/">
+        <Link
+          aria-label="Connect with Writer — home"
+          className="brand"
+          href="/"
+        >
           <svg className="brand__mark">
             <use href="#i-book-mark"></use>
           </svg>
@@ -82,15 +86,24 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className={`nav-pill${isNavOpen ? " is-open" : ""}`}>
+        <nav
+          aria-label="Primary"
+          className={`nav-pill${isNavOpen ? " is-open" : ""}`}
+        >
           <Link aria-current={pathname === "/" ? "page" : undefined} href="/">
             Home
           </Link>
-          <Link aria-current={pathname === "/about-us" ? "page" : undefined} href="/about-us">
+          <Link
+            aria-current={pathname === "/about-us" ? "page" : undefined}
+            href="/about-us"
+          >
             About Us
           </Link>
 
-          <div className={`nav-item${isServicesOpen ? " is-open" : ""}`} ref={navRef}>
+          <div
+            className={`nav-item${isServicesOpen ? " is-open" : ""}`}
+            ref={navRef}
+          >
             <Link
               aria-current={isServicesActive ? "page" : undefined}
               href="/services"
@@ -129,7 +142,10 @@ export default function SiteHeader() {
             Case Studies
           </Link>
           <Link href={pathname === "/" ? "#blog" : "/#blog"}>Blog</Link>
-          <Link aria-current={pathname === "/contact" ? "page" : undefined} href="/contact">
+          <Link
+            aria-current={pathname === "/contact" ? "page" : undefined}
+            href="/contact"
+          >
             Contact Us
           </Link>
         </nav>
@@ -148,12 +164,12 @@ export default function SiteHeader() {
               <use href="#i-close"></use>
             </svg>
           </button>
-          <a className="header-call" href="tel:+18558886875">
-            <svg>
-              <use href="#i-phone"></use>
-            </svg>
-            <span>(855) 888-6875</span>
-          </a>
+          <Link className="header-login" href="/login">
+            Log In
+          </Link>
+          <Link className="header-call" href="/signup">
+            Get Started
+          </Link>
         </div>
       </div>
     </header>
