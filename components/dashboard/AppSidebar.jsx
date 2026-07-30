@@ -12,14 +12,18 @@ import { auth } from "@/lib/firebase/client";
 // item's actual page.
 const NAV_ITEMS = [
   { href: "/dashboard", icon: "i-home", label: "Dashboard" },
-  { href: "/ai-tool", icon: "i-wand", label: "AI Book Writer" },
+  { href: "/ai-book-writer", icon: "i-wand", label: "AI Book Writer" },
   { href: "/all-tools", icon: "i-grid", label: "All Tools", badge: "42" },
   { href: "/my-content", icon: "i-folder", label: "My Content" },
 ];
 
 const NAV_ITEMS_BOTTOM = [
   { href: "/account-settings", icon: "i-settings", label: "Account Settings" },
-  { href: "/account-settings#billing", icon: "i-credit-card", label: "Billing & Invoices" },
+  {
+    href: "/account-settings#billing",
+    icon: "i-credit-card",
+    label: "Billing & Invoices",
+  },
   { href: "/team", icon: "i-users", label: "Team" },
   { href: "/usage", icon: "i-bar-chart", label: "Usage" },
   { href: "/api-keys", icon: "i-terminal", label: "API" },
@@ -99,7 +103,11 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
 
         <nav className="app-nav">
           {NAV_ITEMS.map((item) => (
-            <Link className={pathname === item.href ? "is-active" : ""} href={item.href} key={item.href}>
+            <Link
+              className={pathname === item.href ? "is-active" : ""}
+              href={item.href}
+              key={item.href}
+            >
               <svg>
                 <use href={`#${item.icon}`}></use>
               </svg>
@@ -110,7 +118,9 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
           <div className="app-nav-divider"></div>
           {NAV_ITEMS_BOTTOM.map((item) => (
             <Link
-              className={pathname === item.href.split("#")[0] ? "is-active" : ""}
+              className={
+                pathname === item.href.split("#")[0] ? "is-active" : ""
+              }
               href={item.href}
               key={item.href}
             >
@@ -122,10 +132,18 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
           ))}
         </nav>
 
-        <div className={`app-account${isAccountOpen ? " is-open" : ""}`} ref={accountRef}>
-          <div className="app-account__trigger" onClick={() => setIsAccountOpen((v) => !v)}>
+        <div
+          className={`app-account${isAccountOpen ? " is-open" : ""}`}
+          ref={accountRef}
+        >
+          <div
+            className="app-account__trigger"
+            onClick={() => setIsAccountOpen((v) => !v)}
+          >
             <span className="app-account__avatar">{initials || "?"}</span>
-            <span className="app-account__name">{user?.name || user?.email || "My Account"}</span>
+            <span className="app-account__name">
+              {user?.name || user?.email || "My Account"}
+            </span>
             <svg>
               <use href="#i-chevron-down"></use>
             </svg>

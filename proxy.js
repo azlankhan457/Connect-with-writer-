@@ -22,13 +22,15 @@ const PROTECTED_PREFIXES = [
  */
 export async function proxy(request) {
   const { pathname } = request.nextUrl;
-  const isProtected = PROTECTED_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+  const isProtected = PROTECTED_PREFIXES.some(
+    (p) => pathname === p || pathname.startsWith(`${p}/`),
+  );
 
   if (!isProtected) {
     return NextResponse.next();
   }
 
-  const user = await getSessionUser();
+  const user = await getSessionUser(request);
   if (!user) {
     const loginUrl = new URL("/login", request.url);
     loginUrl.searchParams.set("next", pathname);

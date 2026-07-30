@@ -49,8 +49,14 @@ export default function SignupPage() {
 
     setIsSubmitting(true);
     try {
-      const cred = await createUserWithEmailAndPassword(auth, email.trim(), password);
-      await updateProfile(cred.user, { displayName: `${firstName.trim()} ${lastName.trim()}` });
+      const cred = await createUserWithEmailAndPassword(
+        auth,
+        email.trim(),
+        password,
+      );
+      await updateProfile(cred.user, {
+        displayName: `${firstName.trim()} ${lastName.trim()}`,
+      });
       const idToken = await cred.user.getIdToken();
 
       const res = await fetch("/api/auth/send-otp", {
@@ -63,10 +69,14 @@ export default function SignupPage() {
         throw new Error(data.error || "Could not send a verification code.");
       }
 
-      router.push(`/verify?purpose=signup&email=${encodeURIComponent(email.trim())}`);
+      router.push(
+        `/verify?purpose=signup&email=${encodeURIComponent(email.trim())}`,
+      );
     } catch (err) {
       if (err?.code === "auth/email-already-in-use") {
-        setError("An account with that email already exists. Try logging in instead.");
+        setError(
+          "An account with that email already exists. Try logging in instead.",
+        );
       } else if (err?.code === "auth/weak-password") {
         setError("That password is too weak. Try a longer, less common one.");
       } else {
@@ -81,6 +91,11 @@ export default function SignupPage() {
       visualSubtitle="Join thousands of authors using AI to draft, edit, and publish — start free, no credit card required."
       visualTitle="Every Book Starts With One Page"
     >
+      <div className="auth-back-link" style={{ marginBottom: "1rem" }}>
+        <Link className="auth-link" href="/">
+          ← Back to Home
+        </Link>
+      </div>
       <h1>Create your account</h1>
       <p>Start writing your book with a free trial — no card required.</p>
 
@@ -153,20 +168,42 @@ export default function SignupPage() {
           />
           <div className="password-strength">
             {[0, 1, 2, 3].map((i) => (
-              <span key={i} style={{ background: i < strengthScore ? "var(--orange-dark)" : "var(--line)" }} />
+              <span
+                key={i}
+                style={{
+                  background:
+                    i < strengthScore ? "var(--orange-dark)" : "var(--line)",
+                }}
+              />
             ))}
           </div>
         </div>
 
         <div className="auth-row-between" style={{ marginBottom: "1.1rem" }}>
           <label className="auth-check">
-            <input checked={agreed} onChange={(e) => setAgreed(e.target.checked)} required type="checkbox" />
-            I agree to the <Link className="auth-link" href="/terms-of-service">Terms</Link> &amp;{" "}
-            <Link className="auth-link" href="/privacy-policy">Privacy Policy</Link>
+            <input
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              required
+              type="checkbox"
+            />
+            I agree to the{" "}
+            <Link className="auth-link" href="/terms-of-service">
+              Terms
+            </Link>{" "}
+            &amp;{" "}
+            <Link className="auth-link" href="/privacy-policy">
+              Privacy Policy
+            </Link>
           </label>
         </div>
 
-        <button className="app-btn app-btn--dark" disabled={isSubmitting} style={{ width: "100%", justifyContent: "center" }} type="submit">
+        <button
+          className="app-btn app-btn--dark"
+          disabled={isSubmitting}
+          style={{ width: "100%", justifyContent: "center" }}
+          type="submit"
+        >
           {isSubmitting ? "Creating account\u2026" : "Create Free Account"}
         </button>
       </form>
@@ -175,7 +212,10 @@ export default function SignupPage() {
       <GoogleButton label="Sign up with Google" onError={setError} />
 
       <p className="auth-footer-link">
-        Already have an account? <Link className="auth-link" href="/login">Log in</Link>
+        Already have an account?{" "}
+        <Link className="auth-link" href="/login">
+          Log in
+        </Link>
       </p>
     </AuthShell>
   );

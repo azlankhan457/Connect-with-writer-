@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AssistantWidget from "@/components/ai/AssistantWidget";
 import { getSessionUser } from "@/lib/session";
 
 export default async function DashboardPage() {
@@ -9,14 +10,23 @@ export default async function DashboardPage() {
     <>
       <div className="app-header app-header--greet">
         <h1>
-          <span className="wave">👋</span> Hey {firstName} <span className="dim">— Let&apos;s start your next chapter today!</span>
+          <span className="wave">👋</span> Hey {firstName}{" "}
+          <span className="dim">
+            — Let&apos;s start your next chapter today!
+          </span>
         </h1>
+      </div>
+      <div className="app-card">
+        <AssistantWidget title="Write support assistant" compact />
       </div>
       <div className="app-card">
         <div className="tool-scroll-head">
           <div>
             <h2>Most Popular Tools</h2>
-            <p>These are the most popular tools and a good place to start. Give them a try!</p>
+            <p>
+              These are the most popular tools and a good place to start. Give
+              them a try!
+            </p>
           </div>
           <Link className="tool-all-link" href="/all-tools">
             All Tools{" "}
@@ -36,7 +46,10 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <h3>Chapter Writer</h3>
-            <p>Turn a title and an outline into a fully-structured, publish-ready chapter with this AI editor.</p>
+            <p>
+              Turn a title and an outline into a fully-structured, publish-ready
+              chapter with this AI editor.
+            </p>
           </Link>
           <Link className="tool-card" href="/ai-tool">
             <svg className="tool-card__ext">
@@ -48,7 +61,10 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <h3>Blurb &amp; Synopsis Writer</h3>
-            <p>Quickly write a compelling back-cover blurb or query-letter synopsis with our guided writer.</p>
+            <p>
+              Quickly write a compelling back-cover blurb or query-letter
+              synopsis with our guided writer.
+            </p>
           </Link>
           <Link className="tool-card" href="/ai-tool">
             <svg className="tool-card__ext">
@@ -60,7 +76,10 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <h3>Manuscript Rewriter</h3>
-            <p>Rewrite long-form chapters or passages in seconds to sharpen pacing and voice.</p>
+            <p>
+              Rewrite long-form chapters or passages in seconds to sharpen
+              pacing and voice.
+            </p>
           </Link>
           <Link className="tool-card" href="/ai-tool">
             <svg className="tool-card__ext">
@@ -72,7 +91,10 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <h3>Book Title Generator</h3>
-            <p>Generate genre-matched title options for any book idea, topic, or outline in seconds.</p>
+            <p>
+              Generate genre-matched title options for any book idea, topic, or
+              outline in seconds.
+            </p>
           </Link>
         </div>
       </div>
@@ -80,9 +102,16 @@ export default async function DashboardPage() {
         <div className="autopilot-panel">
           <div className="autopilot-copy">
             <h2>Grow your author platform on autopilot with AI</h2>
-            <p style={{ color: "var(--ink-soft)", fontSize: ".95rem", maxWidth: "46ch" }}>
-              Just enter your book&apos;s title and genre, and Autopilot will generate launch content and suggest
-              changes to help readers actually find it.
+            <p
+              style={{
+                color: "var(--ink-soft)",
+                fontSize: ".95rem",
+                maxWidth: "46ch",
+              }}
+            >
+              Just enter your book&apos;s title and genre, and Autopilot will
+              generate launch content and suggest changes to help readers
+              actually find it.
             </p>
             <ul className="autopilot-list">
               <li>
@@ -121,14 +150,24 @@ export default async function DashboardPage() {
             <div className="mini-card mini-card--chart">
               <div className="mini-card--chart__top">
                 <span>AVERAGE POSITION</span>
-                <svg style={{ width: "14px", height: "14px", color: "var(--ink-faint)" }}>
+                <svg
+                  style={{
+                    width: "14px",
+                    height: "14px",
+                    color: "var(--ink-faint)",
+                  }}
+                >
                   <use href="#i-list"></use>
                 </svg>
               </div>
               <div className="mini-card--chart__val">
                 7.50 <span>▲ +1.74%</span>
               </div>
-              <svg className="mini-sparkline" preserveAspectRatio="none" viewBox="0 0 200 44">
+              <svg
+                className="mini-sparkline"
+                preserveAspectRatio="none"
+                viewBox="0 0 200 44"
+              >
                 <polyline
                   fill="none"
                   points="0,34 25,30 50,32 75,20 100,24 125,12 150,16 175,6 200,10"
@@ -138,7 +177,9 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <div className="mini-card mini-card--table">
-              <div className="mini-card--table__head">New Keyword Opportunities</div>
+              <div className="mini-card--table__head">
+                New Keyword Opportunities
+              </div>
               <div className="mini-table-row">
                 <span>Keyword</span>
                 <span>Vol.</span>

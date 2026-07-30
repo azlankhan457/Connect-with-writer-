@@ -7,7 +7,11 @@ export default function SiteFooter() {
     <footer className="site-footer">
       <div className="container footer-top">
         <div className="footer-brand">
-          <Link aria-label="Connect with Writer — home" className="brand" href="/">
+          <Link
+            aria-label="Connect with Writer — home"
+            className="brand"
+            href="/"
+          >
             <svg className="brand__mark" style={{ color: "var(--orange)" }}>
               <use href="#i-book-mark"></use>
             </svg>
@@ -16,24 +20,44 @@ export default function SiteFooter() {
               <span>with Writer</span>
             </span>
           </Link>
-          <p>Turning ideas into books worth reading — one manuscript at a time.</p>
+          <p>
+            Turning ideas into books worth reading — one manuscript at a time.
+          </p>
+          <Link className="footer-cta" href="/signup">
+            Start Writing Free
+            <svg>
+              <use href="#i-arrow-right"></use>
+            </svg>
+          </Link>
           <div className="social-row">
-            <a aria-label="Facebook" href="https://www.facebook.com/connectwithwriter">
+            <a
+              aria-label="Facebook"
+              href="https://www.facebook.com/connectwithwriter"
+            >
               <svg>
                 <use href="#i-facebook"></use>
               </svg>
             </a>
-            <a aria-label="Instagram" href="https://www.instagram.com/connectwithwriter">
+            <a
+              aria-label="Instagram"
+              href="https://www.instagram.com/connectwithwriter"
+            >
               <svg>
                 <use href="#i-instagram"></use>
               </svg>
             </a>
-            <a aria-label="LinkedIn" href="https://www.linkedin.com/company/connectwithwriter">
+            <a
+              aria-label="LinkedIn"
+              href="https://www.linkedin.com/company/connectwithwriter"
+            >
               <svg>
                 <use href="#i-linkedin"></use>
               </svg>
             </a>
-            <a aria-label="Pinterest" href="https://www.pinterest.com/connectwithwriter">
+            <a
+              aria-label="Pinterest"
+              href="https://www.pinterest.com/connectwithwriter"
+            >
               <svg>
                 <use href="#i-pinterest"></use>
               </svg>
@@ -78,10 +102,14 @@ export default function SiteFooter() {
               <Link href="/book-publishing">Book Publishing</Link>
             </li>
             <li>
-              <Link href="/childrens-book-publication">Children&apos;s Book Publication</Link>
+              <Link href="/childrens-book-publication">
+                Children&apos;s Book Publication
+              </Link>
             </li>
             <li>
-              <Link href="/childrens-book-illustration">Children&apos;s Book Illustration</Link>
+              <Link href="/childrens-book-illustration">
+                Children&apos;s Book Illustration
+              </Link>
             </li>
             <li>
               <Link href="/book-cover-design">Book Cover Design</Link>
@@ -105,7 +133,9 @@ export default function SiteFooter() {
               <svg>
                 <use href="#i-mail"></use>
               </svg>
-              <a href="mailto:hello@connectwithwriter.com">hello@connectwithwriter.com</a>
+              <a href="mailto:hello@connectwithwriter.com">
+                hello@connectwithwriter.com
+              </a>
             </li>
             <li className="contact-line">
               <svg>
