@@ -342,7 +342,7 @@ h2+.lede {
   top: 0;
   z-index: 200;
   background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition:
     box-shadow 0.25s,
