@@ -1,11 +1,14 @@
 /**
  * items: [{ title, author, genre, gradient }]
- * Continuously auto-scrolling book-cover marquee (right to left), pausing
- * on hover. The item list is duplicated so the loop is seamless.
+ * Displays a concise portfolio marquee of the supplied books.
  */
-export default function PortfolioSlider({ eyebrow, title, items, secondsPerItem = 4 }) {
-  const duration = items.length * secondsPerItem;
-  const loopItems = [...items, ...items];
+export default function PortfolioSlider({
+  eyebrow,
+  title,
+  items,
+  secondsPerItem = 4,
+}) {
+  const duration = Math.max(items.length, 1) * secondsPerItem;
 
   return (
     <div className="container">
@@ -16,9 +19,12 @@ export default function PortfolioSlider({ eyebrow, title, items, secondsPerItem 
         </div>
       </div>
       <div className="portfolio-marquee">
-        <div className="portfolio-marquee__track" style={{ "--marquee-duration": `${duration}s` }}>
-          {loopItems.map((book, i) => (
-            <div aria-hidden={i >= items.length || undefined} className="slide" key={`${book.title}-${i}`}>
+        <div
+          className="portfolio-marquee__track"
+          style={{ "--marquee-duration": `${duration}s` }}
+        >
+          {items.map((book) => (
+            <div className="slide" key={book.title}>
               <div className="book" style={{ "--book-bg": book.gradient }}>
                 <div className="book__cover">
                   <span className="book__genre">{book.genre}</span>

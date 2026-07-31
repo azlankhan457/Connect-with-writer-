@@ -940,10 +940,11 @@ h2+.lede {
 
 .progress-card {
   background: #fff;
+  border: 1px solid var(--line);
   border-radius: var(--r-md);
   box-shadow: var(--shadow-lg);
-  padding: 1.4rem;
-  width: 280px;
+  padding: 1.25rem 1.2rem;
+  width: min(100%, 320px);
   position: relative;
   z-index: 1;
 }
@@ -952,7 +953,9 @@ h2+.lede {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .progress-card__top span {
@@ -967,10 +970,11 @@ h2+.lede {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0.5rem 0;
+  padding: 0.7rem 0;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--ink-soft);
+  position: relative;
 }
 
 .progress-step .dot {
@@ -1000,11 +1004,17 @@ h2+.lede {
 }
 
 .progress-step:not(:last-child) {
-  position: relative;
+  border-bottom: 1px solid var(--line);
 }
 
 .progress-step+.progress-step::before {
-  content: none;
+  content: "";
+  position: absolute;
+  top: -0.2rem;
+  left: 0.55rem;
+  width: 1px;
+  height: 0.2rem;
+  background: var(--line);
 }
 
 .genre-grid {
@@ -1043,6 +1053,12 @@ h2+.lede {
 
 .genre-card .btn {
   align-self: flex-start;
+}
+
+.genre-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .slider-head {
@@ -3249,18 +3265,14 @@ select.form-input {
 
 /* ===== Portfolio marquee: continuous auto-scroll, pause on hover (added per request) ===== */
 .portfolio-marquee {
-  overflow: hidden;
-  padding: 0.7rem 0;
-  -webkit-mask-image: linear-gradient(90deg,
-      transparent,
-      #000 4%,
-      #000 96%,
-      transparent);
-  mask-image: linear-gradient(90deg,
-      transparent,
-      #000 4%,
-      #000 96%,
-      transparent);
+  overflow-x: auto;
+  padding: 0.7rem 0 1rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.portfolio-marquee::-webkit-scrollbar {
+  display: none;
 }
 
 .portfolio-marquee__track {
@@ -3268,21 +3280,7 @@ select.form-input {
   gap: 1rem;
   width: max-content;
   align-items: center;
-  animation: portfolio-marquee-scroll var(--marquee-duration, 32s) linear infinite;
-}
-
-.portfolio-marquee:hover .portfolio-marquee__track {
-  animation-play-state: paused;
-}
-
-@keyframes portfolio-marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

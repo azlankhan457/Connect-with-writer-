@@ -166,7 +166,6 @@ export default function HomePage() {
                 <span style={{ background: "var(--orange)" }}>JM</span>
                 <span style={{ background: "var(--ink)" }}>AK</span>
                 <span style={{ background: "var(--orange-deep)" }}>RT</span>
-                <span style={{ background: "var(--orange-dark)" }}>+250</span>
               </div>
               <p className="hero-trust-text">
                 <span aria-hidden="true" className="stars">
@@ -186,7 +185,7 @@ export default function HomePage() {
                     <use href="#i-star"></use>
                   </svg>
                 </span>
-                <strong>4.9 / 5 average rating</strong>from 250+ authors
+                <strong>4.9 / 5 average rating</strong> from 250+ authors
                 we&apos;ve worked with
               </p>
             </div>
@@ -491,11 +490,13 @@ export default function HomePage() {
               <article className="genre-card" key={g.title}>
                 <h3>{g.title}</h3>
                 <p>{g.body}</p>
-                <a className="btn btn--ghost-dark btn--sm" href="#contact">
-                  Let&apos;s Connect
-                </a>
               </article>
             ))}
+          </div>
+          <div className="genre-actions">
+            <a className="btn btn--primary" href="#contact">
+              Let&apos;s Connect
+            </a>
           </div>
         </div>
       </section>

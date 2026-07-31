@@ -137,12 +137,6 @@ export default function SiteFooter() {
                 hello@connectwithwriter.com
               </a>
             </li>
-            <li className="contact-line">
-              <svg>
-                <use href="#i-pin"></use>
-              </svg>
-              <span>123 Author Lane, Suite 200, New York, NY 10001</span>
-            </li>
           </ul>
         </div>
       </div>

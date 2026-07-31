@@ -38,8 +38,10 @@ export default function Page() {
             <p className="eyebrow">Get In Touch</p>
             <h1>Let&apos;s Talk About Your Book</h1>
             <p className="lede">
-              Whether you have a fully formed idea or just a feeling that there&apos;s a book somewhere inside you
-              — we&apos;re ready to listen. Fill out the form and we&apos;ll get back to you within 24 hours.
+              Whether you have a fully formed idea or just a feeling that
+              there&apos;s a book somewhere inside you — we&apos;re ready to
+              listen. Fill out the form and we&apos;ll get back to you within 24
+              hours.
             </p>
             <div className="trust-badges">
               <div className="trust-badge">
@@ -81,8 +83,8 @@ export default function Page() {
                 <p className="eyebrow">Contact Details</p>
                 <h2>We&apos;re Here When You&apos;re Ready</h2>
                 <p className="lede">
-                  Reach us by phone, email, or the form. Every inquiry is handled personally — you&apos;ll
-                  never get a bot response.
+                  Reach us by phone, email, or the form. Every inquiry is
+                  handled personally — you&apos;ll never get a bot response.
                 </p>
 
                 <div className="contact-detail-list">
@@ -108,7 +110,9 @@ export default function Page() {
                     <div>
                       <div className="contact-detail__label">Email Us</div>
                       <div className="contact-detail__value">
-                        <a href="mailto:hello@connectwithwriter.com">hello@connectwithwriter.com</a>
+                        <a href="mailto:hello@connectwithwriter.com">
+                          hello@connectwithwriter.com
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -119,11 +123,12 @@ export default function Page() {
                       </svg>
                     </div>
                     <div>
-                      <div className="contact-detail__label">Mailing Address</div>
+                      <div className="contact-detail__label">
+                        Remote Consultations
+                      </div>
                       <div className="contact-detail__value">
-                        123 Author Lane, Suite 200
-                        <br />
-                        New York, NY 10001
+                        Available nationwide for virtual strategy calls and
+                        project planning.
                       </div>
                     </div>
                   </div>
@@ -158,17 +163,26 @@ export default function Page() {
                   Follow Us
                 </p>
                 <div className="social-row">
-                  <a aria-label="Facebook" href="https://www.facebook.com/connectwithwriter">
+                  <a
+                    aria-label="Facebook"
+                    href="https://www.facebook.com/connectwithwriter"
+                  >
                     <svg>
                       <use href="#i-facebook"></use>
                     </svg>
                   </a>
-                  <a aria-label="Instagram" href="https://www.instagram.com/connectwithwriter">
+                  <a
+                    aria-label="Instagram"
+                    href="https://www.instagram.com/connectwithwriter"
+                  >
                     <svg>
                       <use href="#i-instagram"></use>
                     </svg>
                   </a>
-                  <a aria-label="LinkedIn" href="https://www.linkedin.com/company/connectwithwriter">
+                  <a
+                    aria-label="LinkedIn"
+                    href="https://www.linkedin.com/company/connectwithwriter"
+                  >
                     <svg>
                       <use href="#i-linkedin"></use>
                     </svg>
