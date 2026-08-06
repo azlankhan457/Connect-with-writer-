@@ -2168,6 +2168,7 @@ h2+.lede {
   border-radius: var(--r-md);
   box-shadow: var(--shadow-lg);
   padding: 0.6rem;
+  margin-top: 0;
   min-width: 280px;
   display: grid;
   grid-template-columns: 1fr;
