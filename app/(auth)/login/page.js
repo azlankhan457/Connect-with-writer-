@@ -43,7 +43,39 @@ function LoginForm() {
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
+
+        // If account needs signup verification, redirect to signup verification flow
+        if (data.needsSignupVerification) {
+          router.push(
+            `/verify?purpose=signup&email=${encodeURIComponent(email.trim())}`,
+          );
+          return;
+        }
+
         throw new Error(data.error || "Could not send a verification code.");
+      }
+
+      const data = await res.json();
+
+      // If this is a trusted device, skip OTP and create session directly
+      if (data.skipOtp) {
+        try {
+          const sessionRes = await fetch("/api/auth/create-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ idToken }),
+          });
+          if (!sessionRes.ok) {
+            throw new Error("Could not establish session.");
+          }
+          const next = searchParams.get("next") || "/dashboard";
+          router.push(next);
+          router.refresh();
+        } catch (err) {
+          setError(err?.message || "Could not log you in. Please try again.");
+          setIsSubmitting(false);
+        }
+        return;
       }
 
       const next = searchParams.get("next") || "/dashboard";

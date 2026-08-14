@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminAuth, adminDb } from "@/lib/firebase/admin";
 import { verifyOtp } from "@/lib/otp";
-import { createSessionCookie } from "@/lib/session";
+import { createSessionCookie, setTrustedDevice } from "@/lib/session";
 
 /**
  * POST { idToken, purpose: "signup" | "login", code }
@@ -20,7 +20,21 @@ export async function POST(request) {
     const decoded = await adminAuth.verifyIdToken(idToken);
     const email = decoded.email;
     if (!email) {
-      return NextResponse.json({ error: "No email associated with this account." }, { status: 400 });
+      return NextResponse.json(
+        { error: "No email associated with this account." },
+        { status: 400 },
+      );
+    }
+
+    // Do not create session for unverified accounts
+    if (!decoded.email_verified && purpose === "login") {
+      return NextResponse.json(
+        {
+          error:
+            "Your account hasn't been verified yet. Please complete the signup verification first.",
+        },
+        { status: 403 },
+      );
     }
 
     const result = await verifyOtp(email, purpose, code);
@@ -36,15 +50,22 @@ export async function POST(request) {
           emailVerified: true,
           createdAt: Date.now(),
         },
-        { merge: true }
+        { merge: true },
       );
     }
 
     await createSessionCookie(idToken);
 
+    // Set trusted device for both signup and login
+    // This allows future logins on this device to skip OTP
+    await setTrustedDevice(decoded.uid);
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("verify-otp error:", err);
-    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Something went wrong. Please try again." },
+      { status: 500 },
+    );
   }
 }

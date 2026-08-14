@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
 
-export default function GoogleButton({ label = "Continue with Google", onError }) {
+export default function GoogleButton({
+  label = "Continue with Google",
+  onError,
+}) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +30,16 @@ export default function GoogleButton({ label = "Continue with Google", onError }
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
+
+        // If account needs signup verification, this is unexpected with Google sign-in
+        // but handle it gracefully by redirecting to signup verification
+        if (data.needsSignupVerification) {
+          router.push(
+            `/verify?purpose=signup&email=${encodeURIComponent(result.user.email)}`,
+          );
+          return;
+        }
+
         throw new Error(data.error || "Could not sign you in with Google.");
       }
 
@@ -44,7 +57,12 @@ export default function GoogleButton({ label = "Continue with Google", onError }
   }
 
   return (
-    <button className="auth-alt-btn" disabled={isLoading} onClick={handleClick} type="button">
+    <button
+      className="auth-alt-btn"
+      disabled={isLoading}
+      onClick={handleClick}
+      type="button"
+    >
       <svg viewBox="0 0 20 20" width="18" height="18">
         <path
           fill="#4285F4"

@@ -23,7 +23,7 @@ const SERVICE_LINKS = [
   { href: "/book-marketing", icon: "i-megaphone", label: "Book Marketing" },
 ];
 
-export default function SiteHeader() {
+export default function SiteHeader({ isLoggedIn = false }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -164,12 +164,20 @@ export default function SiteHeader() {
               <use href="#i-close"></use>
             </svg>
           </button>
-          <Link className="header-login" href="/login">
-            Log In
-          </Link>
-          <Link className="header-call" href="/signup">
-            Get Started
-          </Link>
+          {isLoggedIn ? (
+            <Link className="header-call" href="/dashboard">
+              Dashboard
+            </Link>
+          ) : (
+            <>
+              <Link className="header-login" href="/login">
+                Log In
+              </Link>
+              <Link className="header-call" href="/signup">
+                Get Started
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>
