@@ -1,57 +1,40 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function OtpCodeInput({ value, onChange, length = 6 }) {
-  const inputRefs = useRef([]);
-  const digits = value.padEnd(length, " ").split("").slice(0, length);
+  const inputRef = useRef(null);
+  const [isFocused, setIsFocused] = useState(false);
 
-  function setDigitAt(index, char) {
-    const next = digits.slice();
-    next[index] = char;
-    onChange(next.join("").replace(/ /g, ""));
+  function handleChange(e) {
+    const digits = e.target.value.replace(/[^0-9]/g, "").slice(0, length);
+    onChange(digits);
   }
 
-  function handleChange(index, e) {
-    const raw = e.target.value.replace(/[^0-9]/g, "");
-    if (!raw) {
-      setDigitAt(index, " ");
-      return;
-    }
-    // Handle pasting a full code into one box
-    if (raw.length > 1) {
-      const chars = raw.split("").slice(0, length - index);
-      const next = digits.slice();
-      chars.forEach((c, i) => (next[index + i] = c));
-      onChange(next.join("").replace(/ /g, ""));
-      const lastIndex = Math.min(index + chars.length, length - 1);
-      inputRefs.current[lastIndex]?.focus();
-      return;
-    }
-    setDigitAt(index, raw);
-    if (index < length - 1) inputRefs.current[index + 1]?.focus();
-  }
-
-  function handleKeyDown(index, e) {
-    if (e.key === "Backspace" && !digits[index].trim() && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-  }
+  const boxes = Array.from({ length }, (_, i) => value[i] || "");
 
   return (
-    <div className="otp-input-row">
-      {digits.map((d, i) => (
-        <input
-          className="otp-digit"
-          inputMode="numeric"
+    <div className="otp-input-row" onClick={() => inputRef.current?.focus()}>
+      <input
+        aria-label="Verification code"
+        autoComplete="one-time-code"
+        className="otp-hidden-input"
+        inputMode="numeric"
+        maxLength={length}
+        onBlur={() => setIsFocused(false)}
+        onChange={handleChange}
+        onFocus={() => setIsFocused(true)}
+        ref={inputRef}
+        type="text"
+        value={value}
+      />
+      {boxes.map((char, i) => (
+        <div
+          className={`otp-digit${isFocused && i === value.length ? " otp-digit--active" : ""}`}
           key={i}
-          maxLength={1}
-          onChange={(e) => handleChange(i, e)}
-          onKeyDown={(e) => handleKeyDown(i, e)}
-          ref={(el) => (inputRefs.current[i] = el)}
-          type="text"
-          value={d.trim()}
-        />
+        >
+          {char}
+        </div>
       ))}
     </div>
   );
