@@ -1,15 +1,83 @@
 import Link from "next/link";
+import { getBlogPosts } from "@/lib/blog/posts";
+
+export const metadata = {
+  title: "Sitemap",
+  description: "A list of every page on the Connect with Writer website.",
+};
+
+const GROUPS = [
+  {
+    title: "Company",
+    links: [
+      ["/", "Home"],
+      ["/about-us", "About Us"],
+      ["/case-studies", "Case Studies"],
+      ["/contact", "Contact Us"],
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      ["/services", "Our Services"],
+      ["/book-writing", "Book Writing"],
+      ["/book-editing", "Book Editing"],
+      ["/proofreading", "Proofreading"],
+      ["/book-publishing", "Book Publishing"],
+      ["/childrens-book-publication", "Children\u2019s Book Publication"],
+      ["/childrens-book-illustration", "Children\u2019s Book Illustration"],
+      ["/book-cover-design", "Book Cover Design"],
+      ["/book-marketing", "Book Marketing"],
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      ["/privacy-policy", "Privacy Policy"],
+      ["/terms-of-service", "Terms of Service"],
+    ],
+  },
+];
 
 export default function Page() {
+  const groups = [
+    GROUPS[0],
+    GROUPS[1],
+    {
+      title: "Blog",
+      links: [
+        ["/blog", "All articles"],
+        ...getBlogPosts().map((post) => [`/blog/${post.slug}`, post.title]),
+      ],
+    },
+    GROUPS[2],
+  ];
+
   return (
     <>
-<section className="section" style={{paddingTop: "clamp(48px,7vw,72px)"}}>
-  <div className="container" style={{maxWidth: "760px"}}>
-    <p className="eyebrow">Site Navigation</p>
-    <h1 style={{marginBottom: "1.5rem"}}>Sitemap</h1>
-    <div className="body-copy"><ul style={{listStyle: "disc", paddingLeft: "1.4rem", display: "flex", flexDirection: "column", gap: ".6rem"}}><li><Link href="/">Home</Link></li><li><Link href="/about-us">About Us</Link></li><li><Link href="/services">Our Services</Link></li><li><Link href="/book-writing">Book Writing</Link></li><li><Link href="/book-editing">Book Editing</Link></li><li><Link href="/proofreading">Proofreading</Link></li><li><Link href="/book-publishing">Book Publishing</Link></li><li><Link href="/childrens-book-publication">Children&apos;s Book Publication</Link></li><li><Link href="/childrens-book-illustration">Children&apos;s Book Illustration</Link></li><li><Link href="/book-cover-design">Book Cover Design</Link></li><li><Link href="/book-marketing">Book Marketing</Link></li><li><Link href="/case-studies">Case Studies</Link></li><li><Link href="/contact">Contact Us</Link></li><li><Link href="/privacy-policy">Privacy Policy</Link></li><li><Link href="/terms-of-service">Terms of Service</Link></li></ul></div>
-  </div>
-</section>
+      <section className="about-hero">
+        <div className="container about-hero__copy reveal">
+          <p className="eyebrow">Site Navigation</p>
+          <h1>Sitemap</h1>
+        </div>
+      </section>
+
+      <section className="section section--tight">
+        <div className="container sitemap-grid">
+          {groups.map((group) => (
+            <nav aria-labelledby={`sm-${group.title}`} key={group.title}>
+              <h2 id={`sm-${group.title}`}>{group.title}</h2>
+              <ul>
+                {group.links.map(([href, label]) => (
+                  <li key={href}>
+                    <Link href={href}>{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { submitContact } from "@/lib/submitContact";
 
 const HEAR_OPTIONS = ["Google Search", "Referral / Friend", "Social Media", "Podcast / Interview", "Other"];
 const GENRES = ["Memoir", "Fiction", "Business", "Self-Help", "Thriller", "Other"];
@@ -27,7 +28,9 @@ export default function MultiStepContactForm() {
     service: "",
     budget: "",
     message: "",
+    website: "",
   });
+  const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState("");
 
   function update(field, value) {
@@ -43,12 +46,23 @@ export default function MultiStepContactForm() {
     setStep(2);
   }
 
-  function submit() {
-    if (!values.genre || !values.service || !values.message.trim()) {
-      setError("Please select a genre, a service, and describe your book idea.");
+  async function submit() {
+    if (!values.genre || !values.service || values.message.trim().length < 10) {
+      setError("Please select a genre, a service, and describe your book idea (10+ characters).");
       return;
     }
     setError("");
+    setIsSending(true);
+    const result = await submitContact({
+      ...values,
+      name: `${values.fname} ${values.lname}`.trim(),
+    });
+    setIsSending(false);
+
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
     setStep(3);
   }
 
@@ -158,14 +172,13 @@ export default function MultiStepContactForm() {
             </select>
           </div>
           {error && (
-            <p className="field-error" role="alert" style={{ display: "block", marginBottom: ".8rem" }}>
+            <p className="form-alert" role="alert">
               {error}
             </p>
           )}
           <button
-            className="btn btn--primary"
+            className="btn btn--primary btn--block"
             onClick={goToStep2}
-            style={{ width: "100%", justifyContent: "center" }}
             type="button"
           >
             Continue{" "}
@@ -178,10 +191,10 @@ export default function MultiStepContactForm() {
 
       {step === 2 && (
         <div>
-          <div className="form-group">
-            <label>
+          <fieldset className="form-group form-fieldset">
+            <legend>
               Book Genre <span className="req">*</span>
-            </label>
+            </legend>
             <div className="genre-grid">
               {GENRES.map((g) => (
                 <div className="genre-chip" key={g}>
@@ -197,7 +210,7 @@ export default function MultiStepContactForm() {
                 </div>
               ))}
             </div>
-          </div>
+          </fieldset>
           <div className="form-group">
             <label htmlFor="service">
               Service Needed <span className="req">*</span>
@@ -253,20 +266,24 @@ export default function MultiStepContactForm() {
             />
             <span className="form-hint">The more detail you share, the better we can match you with the right writer.</span>
           </div>
+          <div aria-hidden="true" className="hp-field">
+            <label htmlFor="website">Leave this field empty</label>
+            <input autoComplete="off" id="website" name="website" onChange={(e) => update("website", e.target.value)} tabIndex={-1} type="text" value={values.website} />
+          </div>
           {error && (
-            <p className="field-error" role="alert" style={{ display: "block", marginBottom: ".8rem" }}>
+            <p className="form-alert" role="alert">
               {error}
             </p>
           )}
           <div className="form-submit-row">
-            <button className="btn btn--primary" onClick={submit} style={{ flex: "1", justifyContent: "center" }} type="button">
-              Send My Enquiry{" "}
+            <button className="btn btn--primary btn--block" disabled={isSending} onClick={submit} type="button">
+              {isSending ? "Sending…" : "Send My Enquiry"}{" "}
               <svg>
                 <use href="#i-arrow-right"></use>
               </svg>
             </button>
           </div>
-          <div className="form-privacy" style={{ marginTop: ".9rem" }}>
+          <div className="form-privacy form-privacy--spaced">
             <svg>
               <use href="#i-lock"></use>
             </svg>
@@ -276,7 +293,7 @@ export default function MultiStepContactForm() {
       )}
 
       {step === 3 && (
-        <div className="form-success" style={{ display: "flex" }}>
+        <div className="form-success form-success--step" role="status">
           <div className="form-success__icon">
             <svg>
               <use href="#i-check"></use>

@@ -101,7 +101,7 @@ function LoginForm() {
       visualSubtitle="Pick up right where you left off — your chapters, tools, and progress are all exactly as you left them."
       visualTitle="Welcome Back to Your Writing Desk"
     >
-      <div className="auth-back-link" style={{ marginBottom: "1rem" }}>
+      <div className="auth-back-link">
         <Link className="auth-link" href="/">
           ← Back to Home
         </Link>
@@ -110,7 +110,7 @@ function LoginForm() {
       <p>Log in to keep writing where you left off.</p>
 
       {error && (
-        <div className="auth-error" style={{ display: "block" }}>
+        <div className="auth-error is-visible" role="alert">
           {error}
         </div>
       )}
@@ -123,6 +123,7 @@ function LoginForm() {
               <use href="#i-mail"></use>
             </svg>
             <input
+              autoComplete="email"
               id="login-email"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
@@ -135,6 +136,7 @@ function LoginForm() {
         <div className="auth-field">
           <label htmlFor="login-password">Password</label>
           <PasswordInput
+            autoComplete="current-password"
             id="login-password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -154,9 +156,8 @@ function LoginForm() {
           </a>
         </div>
         <button
-          className="app-btn app-btn--dark"
+          className="app-btn app-btn--dark app-btn--block"
           disabled={isSubmitting}
-          style={{ width: "100%", justifyContent: "center" }}
           type="submit"
         >
           {isSubmitting ? "Logging in\u2026" : "Log In"}

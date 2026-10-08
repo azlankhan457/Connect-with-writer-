@@ -12,7 +12,7 @@ export default function OutlineBuilder({
   placeholderPrefix = "Beat",
   initialRows,
   allowRemove = false,
-  aiFillLabel = "Write the outline with AI",
+  aiFillLabel = "Insert sample outline",
   aiFillSamples,
 }) {
   const [rows, setRows] = useState(
@@ -31,27 +31,25 @@ export default function OutlineBuilder({
     setRows((r) => r.map((row) => (row.id === id ? { ...row, value } : row)));
   }
 
-  function fillWithAi() {
-    if (aiFillSamples?.length) {
-      setRows(aiFillSamples.map((text) => ({ id: newId(), value: text })));
-    } else {
-      addRow();
-    }
+  function fillWithSamples() {
+    setRows(aiFillSamples.map((text) => ({ id: newId(), value: text })));
   }
 
   return (
     <div className="app-field">
-      <div className="app-field--row" style={{ marginBottom: ".7rem" }}>
-        <label style={{ marginBottom: 0 }}>
+      <div className="app-field--row outline-head">
+        <span className="outline-head__label">
           {allowRemove ? "Chapter Outline" : "Outline"}{" "}
           <span className="hint">(minimum 3 {allowRemove ? "chapters" : "beats"})</span>
-        </label>
-        <button className="ai-assist-btn" onClick={fillWithAi} type="button">
-          <svg>
-            <use href="#i-wand"></use>
-          </svg>
-          {aiFillLabel}
-        </button>
+        </span>
+        {aiFillSamples?.length > 0 && (
+          <button className="ai-assist-btn" onClick={fillWithSamples} type="button">
+            <svg aria-hidden="true">
+              <use href="#i-wand"></use>
+            </svg>
+            {aiFillLabel}
+          </button>
+        )}
       </div>
       <div>
         {rows.map((row, i) => {

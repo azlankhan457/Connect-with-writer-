@@ -14,7 +14,7 @@ export default function MyContentPage() {
 
   return (
     <>
-      <div className="app-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "1rem", flexWrap: "wrap" }}>
+      <div className="app-header app-header--split">
         <div>
           <h1>My Content</h1>
           <p>Find all your chapters, blurbs, and any saved content below.</p>
@@ -43,6 +43,11 @@ export default function MyContentPage() {
         </div>
       </div>
 
+      <p className="content-note">
+        Sample items are shown below to preview this page. Content you save
+        will appear here.
+      </p>
+
       <div className={`content-grid${view === "list" ? " is-list" : ""}`}>
         {CONTENT_ITEMS.map((item) => (
           <article className="content-card" key={item.title}>
@@ -52,7 +57,7 @@ export default function MyContentPage() {
               </svg>
             </div>
             <div className="content-card__body">
-              <span className="content-card__tag">{item.tag}</span>
+              <span className="content-card__tag">{item.tag} · Sample</span>
               <h3>{item.title}</h3>
               <div className="content-card__meta">
                 <span>{item.meta[0]}</span>
@@ -63,7 +68,7 @@ export default function MyContentPage() {
         ))}
       </div>
 
-      <div className="empty-state" style={{ marginTop: "1.5rem" }}>
+      <div className="empty-state empty-state--spaced">
         <p>Looking for something else? You didn&apos;t create any other content yet.</p>
         <p>Our Chapter Writer tool is a good place to start if you want to draft a scene in seconds, or visit our collection of tools.</p>
         <div className="cta-row">

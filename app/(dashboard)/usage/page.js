@@ -1,4 +1,7 @@
 import Link from "next/link";
+import PreviewNotice from "@/components/dashboard/PreviewNotice";
+
+export const metadata = { title: "Usage" };
 
 export default function Page() {
   return (
@@ -8,6 +11,7 @@ export default function Page() {
 <p>Review your usage (and your team&apos;s usage) for the current billing cycle.</p>
 </div>
 <div className="app-card">
+<PreviewNotice>Usage tracking isn&apos;t live yet. The figures below are placeholders.</PreviewNotice>
 <div className="app-card__head">
 <h2>Available Credits</h2>
 <span className="app-card__sub">Current billing cycle: Free trial</span>
@@ -45,9 +49,9 @@ export default function Page() {
 </div>
 <div className="app-card">
 <div className="app-card__head"><h2>Need More Words?</h2></div>
-<div className="upsell-banner" style={{marginBottom: "0"}}>
-<p>Upgrade your plan to unlock unlimited words, priority support, and full access to every writing tool.</p>
-<Link className="app-btn app-btn--dark" href="/account-settings"><svg style={{width: "16px", height: "16px"}}><use href="#i-zap"></use></svg>Upgrade Now</Link>
+<div className="upsell-banner upsell-banner--flush">
+<p>Paid plans aren&apos;t available yet. Get in touch and we&apos;ll let you know when they are.</p>
+<Link className="app-btn app-btn--dark" href="/contact"><svg aria-hidden="true" className="app-btn__icon"><use href="#i-zap"></use></svg>Contact us</Link>
 </div>
 </div>
     </>

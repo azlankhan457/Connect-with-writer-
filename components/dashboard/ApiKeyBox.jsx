@@ -23,7 +23,7 @@ export default function ApiKeyBox({ apiKey }) {
         </svg>
       </button>
       <button className="app-btn app-btn--ghost" onClick={() => copyText(apiKey)} type="button">
-        <svg style={{ width: "15px", height: "15px" }}>
+        <svg aria-hidden="true" className="app-btn__icon">
           <use href="#i-copy"></use>
         </svg>
         Copy

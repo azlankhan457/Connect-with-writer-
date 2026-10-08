@@ -85,7 +85,7 @@ export default function ToolsExplorer({ tools }) {
         ))}
 
       {filtered.length === 0 && (
-        <div className="empty-state" style={{ marginTop: "1rem" }}>
+        <div className="empty-state empty-state--spaced">
           <p>No tools match your search. Try a different keyword or clear your filters.</p>
         </div>
       )}

@@ -1,6 +1,58 @@
 import MultiStepContactForm from "@/components/MultiStepContactForm";
 import FaqGrid from "@/components/FaqGrid";
 
+export const metadata = {
+  title: "Contact Us",
+  description:
+    "Tell Connect with Writer about your book. Call, email or send the project form and our team will get back to you.",
+};
+
+const TRUST_BADGES = [
+  { icon: "i-lock", label: "100% Confidential" },
+  { icon: "i-clock", label: "Response Within 24 hrs" },
+  { icon: "i-check", label: "Free Consultation" },
+  { icon: "i-shield", label: "NDA Available" },
+];
+
+const CONTACT_DETAILS = [
+  {
+    icon: "i-phone",
+    label: "Call Us",
+    value: <a href="tel:+18558886875">(855) 888-6875</a>,
+  },
+  {
+    icon: "i-mail",
+    label: "Email Us",
+    value: (
+      <a href="mailto:hello@connectwithwriter.com">hello@connectwithwriter.com</a>
+    ),
+  },
+  {
+    icon: "i-pin",
+    label: "Remote Consultations",
+    value:
+      "Available nationwide for virtual strategy calls and project planning.",
+  },
+];
+
+const HOURS = [
+  ["Monday \u2013 Friday", "9:00 AM \u2013 6:00 PM EST"],
+  ["Saturday", "10:00 AM \u2013 2:00 PM EST"],
+  ["Sunday", "Closed"],
+];
+
+const SOCIALS = [
+  { icon: "i-facebook", label: "Facebook", href: "https://www.facebook.com/connectwithwriter" },
+  { icon: "i-instagram", label: "Instagram", href: "https://www.instagram.com/connectwithwriter" },
+  { icon: "i-linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/connectwithwriter" },
+];
+
+const NEXT_STEPS = [
+  ["Send your details", "Share a few details about you and your book."],
+  ["We review your project", "Our team reads your message and looks at what you need."],
+  ["We reach out", "We contact you to arrange a free consultation."],
+];
+
 const CONTACT_FAQS = [
   {
     q: "How does the free consultation work?",
@@ -31,180 +83,109 @@ const CONTACT_FAQS = [
 export default function Page() {
   return (
     <>
-      {/* PAGE HERO */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-hero-inner reveal">
-            <p className="eyebrow">Get In Touch</p>
-            <h1>Let&apos;s Talk About Your Book</h1>
-            <p className="lede">
-              Whether you have a fully formed idea or just a feeling that
-              there&apos;s a book somewhere inside you — we&apos;re ready to
-              listen. Fill out the form and we&apos;ll get back to you within 24
-              hours.
-            </p>
-            <div className="trust-badges">
-              <div className="trust-badge">
-                <svg>
-                  <use href="#i-lock"></use>
+      <section className="about-hero">
+        <div className="container about-hero__copy reveal">
+          <p className="eyebrow">Get In Touch</p>
+          <h1>Let&apos;s Talk About Your Book</h1>
+          <p className="lede">
+            Whether you have a fully formed idea or just a feeling that
+            there&apos;s a book somewhere inside you, we&apos;re ready to
+            listen. Fill out the form and we&apos;ll get back to you within 24
+            hours.
+          </p>
+          <ul className="trust-badges">
+            {TRUST_BADGES.map((badge) => (
+              <li className="trust-badge" key={badge.label}>
+                <svg aria-hidden="true">
+                  <use href={`#${badge.icon}`}></use>
                 </svg>
-                100% Confidential
-              </div>
-              <div className="trust-badge">
-                <svg>
-                  <use href="#i-clock"></use>
-                </svg>
-                Response Within 24 hrs
-              </div>
-              <div className="trust-badge">
-                <svg>
-                  <use href="#i-check"></use>
-                </svg>
-                Free Consultation
-              </div>
-              <div className="trust-badge">
-                <svg>
-                  <use href="#i-shield"></use>
-                </svg>
-                NDA Available
-              </div>
-            </div>
-          </div>
+                {badge.label}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* CONTACT SECTION */}
       <section className="section section--tight">
         <div className="container">
           <div className="contact-layout">
-            {/* LEFT: Info */}
             <div className="reveal">
               <div className="contact-info-card">
                 <p className="eyebrow">Contact Details</p>
                 <h2>We&apos;re Here When You&apos;re Ready</h2>
                 <p className="lede">
                   Reach us by phone, email, or the form. Every inquiry is
-                  handled personally — you&apos;ll never get a bot response.
+                  read by our team.
                 </p>
 
                 <div className="contact-detail-list">
-                  <div className="contact-detail">
-                    <div className="contact-detail__icon">
-                      <svg>
-                        <use href="#i-phone"></use>
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="contact-detail__label">Call Us</div>
-                      <div className="contact-detail__value">
-                        <a href="tel:+18558886875">(855) 888-6875</a>
+                  {CONTACT_DETAILS.map((item) => (
+                    <div className="contact-detail" key={item.label}>
+                      <div className="contact-detail__icon">
+                        <svg aria-hidden="true">
+                          <use href={`#${item.icon}`}></use>
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="contact-detail__label">{item.label}</div>
+                        <div className="contact-detail__value">{item.value}</div>
                       </div>
                     </div>
-                  </div>
-                  <div className="contact-detail">
-                    <div className="contact-detail__icon">
-                      <svg>
-                        <use href="#i-mail"></use>
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="contact-detail__label">Email Us</div>
-                      <div className="contact-detail__value">
-                        <a href="mailto:hello@connectwithwriter.com">
-                          hello@connectwithwriter.com
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="contact-detail">
-                    <div className="contact-detail__icon">
-                      <svg>
-                        <use href="#i-pin"></use>
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="contact-detail__label">
-                        Remote Consultations
-                      </div>
-                      <div className="contact-detail__value">
-                        Available nationwide for virtual strategy calls and
-                        project planning.
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
                 <div className="hours-block">
                   <h4>Office Hours</h4>
-                  <div className="hours-row">
-                    <span>Monday – Friday</span>
-                    <span>9:00 AM – 6:00 PM EST</span>
-                  </div>
-                  <div className="hours-row">
-                    <span>Saturday</span>
-                    <span>10:00 AM – 2:00 PM EST</span>
-                  </div>
-                  <div className="hours-row">
-                    <span>Sunday</span>
-                    <span>Closed</span>
-                  </div>
+                  {HOURS.map(([day, time]) => (
+                    <div className="hours-row" key={day}>
+                      <span>{day}</span>
+                      <span>{time}</span>
+                    </div>
+                  ))}
                 </div>
 
-                <p
-                  style={{
-                    fontSize: ".82rem",
-                    fontWeight: "700",
-                    textTransform: "uppercase",
-                    letterSpacing: ".08em",
-                    color: "rgba(255,255,255,.4)",
-                    marginBottom: ".8rem",
-                  }}
-                >
-                  Follow Us
-                </p>
+                <p className="contact-follow">Follow Us</p>
                 <div className="social-row">
-                  <a
-                    aria-label="Facebook"
-                    href="https://www.facebook.com/connectwithwriter"
-                  >
-                    <svg>
-                      <use href="#i-facebook"></use>
-                    </svg>
-                  </a>
-                  <a
-                    aria-label="Instagram"
-                    href="https://www.instagram.com/connectwithwriter"
-                  >
-                    <svg>
-                      <use href="#i-instagram"></use>
-                    </svg>
-                  </a>
-                  <a
-                    aria-label="LinkedIn"
-                    href="https://www.linkedin.com/company/connectwithwriter"
-                  >
-                    <svg>
-                      <use href="#i-linkedin"></use>
-                    </svg>
-                  </a>
+                  {SOCIALS.map((social) => (
+                    <a
+                      aria-label={social.label}
+                      href={social.href}
+                      key={social.label}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <svg aria-hidden="true">
+                        <use href={`#${social.icon}`}></use>
+                      </svg>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* RIGHT: Form */}
             <div className="reveal">
               <MultiStepContactForm />
+              <ol className="contact-steps">
+                {NEXT_STEPS.map(([title, text], index) => (
+                  <li key={title}>
+                    <span className="contact-steps__num">0{index + 1}</span>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="section section--cream">
         <div className="container">
           <div className="section-head center reveal">
             <p className="eyebrow">Common Questions</p>
-            <h2>Before You Reach Out, You Might Want to Know…</h2>
+            <h2>Before You Reach Out, You Might Want to Know&hellip;</h2>
           </div>
           <FaqGrid items={CONTACT_FAQS} />
         </div>

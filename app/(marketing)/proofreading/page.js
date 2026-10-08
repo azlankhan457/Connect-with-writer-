@@ -2,6 +2,7 @@ import PortfolioSlider from "@/components/PortfolioSlider";
 import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
+import ProofMarks from "@/components/services/ProofMarks";
 
 const PORTFOLIO_BOOKS = [
   { title: "Final Pass", author: "H. Delgado", genre: "Nonfiction", gradient: "linear-gradient(155deg,#2a5a6a,#0f2830)" },
@@ -30,15 +31,33 @@ const FAQS = [
   { q: "Can I request specific style guide rules (e.g., Chicago, AP)?", a: "Absolutely. We build a style sheet at the start of every project based on your preferred style guide or specific formatting requests." },
 ];
 
+const PROOF_PASSAGE = [
+  "Elena ",
+  { wrong: "recieved", right: "received", type: "spelling" },
+  " the letter on Tuesday",
+  { wrong: ",but", right: ", but", type: "punctuation" },
+  " she did not open it until Friday. ",
+  { wrong: "Their", right: "There", type: "grammar" },
+  " was no return address, only a stamp from a town she had never heard of. She forwarded the ",
+  { wrong: "e-mail", right: "email", type: "consistency" },
+  " to her sister, ",
+  { wrong: "who's", right: "whose", type: "grammar" },
+  " advice she always trusted, and waited. Later that night she wrote another email: ",
+  { wrong: "Its", right: "It's", type: "punctuation" },
+  " ",
+  { wrong: "definately", right: "definitely", type: "spelling" },
+  " from him.",
+];
+
 export default function Page() {
   return (
     <>
 
 
 {/*============================ HERO ============================ */}
-<section className="hero">
-  <div className="container hero-grid">
-    <div className="hero-copy">
+<section className="svc-hero">
+  <div className="container svc-hero__grid">
+    <div className="svc-hero__copy">
       <p className="eyebrow">Professional Proofreading Services</p>
       <h1>Meticulous Proofreading That Catches What Everyone Else Misses</h1>
       <p className="lede">After the editing is done, our proofreaders comb every page for typos, grammar slips, punctuation errors, and formatting inconsistencies — the final quality check before your book goes to print or upload.</p>
@@ -46,30 +65,41 @@ export default function Page() {
         <a href="#contact" className="btn btn--primary">Get a Free Sample Proofread <svg><use href="#i-arrow-right"></use></svg></a>
         <a href="#portfolio" className="btn btn--ghost-dark">See Our Work</a>
       </div>
-      <div className="hero-trust">
-        <div className="avatar-stack" aria-hidden="true">
-          <span style={{background: "var(--orange)"}}>JM</span>
-          <span style={{background: "var(--ink)"}}>AK</span>
-          <span style={{background: "var(--orange-deep)"}}>RT</span>
-          <span style={{background: "var(--orange-dark)"}}>+250</span>
-        </div>
-        <p className="hero-trust-text">
-          <span className="stars" aria-hidden="true"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></span>
-          <strong>4.9 / 5 average rating</strong>from 250+ authors we&apos;ve worked with
-        </p>
-      </div>
+      <p className="svc-hero__note"><strong>Two independent passes</strong>Plus a final formatting check for print or eBook</p>
     </div>
-
-    <div className="hero-visual">
-      <div className="hero-art">
-        <div className="hero-art__blob" aria-hidden="true"></div>
-        <div className="hero-art__book" aria-hidden="true">
-          <svg><use href="#i-search" style={{color: "var(--orange-dark)"}}></use></svg>
+    <div className="svc-hero__visual">
+      <figure className="proofsheet">
+        <div className="proofsheet__page">
+          <div aria-hidden="true" className="proofsheet__gutter">
+            <span>sp</span>
+            <span>&#8963;</span>
+            <span>gr</span>
+          </div>
+          <p className="proofsheet__text">
+            The final chapter was{" "}
+            <span className="pm pm--spelling">
+              <del>recieved</del>
+              <ins>received</ins>
+            </span>{" "}
+            on Monday
+            <span className="pm pm--punctuation">
+              <del>,and</del>
+              <ins>, and</ins>
+            </span>{" "}
+            <span className="pm pm--grammar">
+              <del>their</del>
+              <ins>there</ins>
+            </span>{" "}
+            was one more page to check.
+          </p>
         </div>
-        <div className="float-card float-card--1"><svg><use href="#i-check-circle"></use></svg><span>600+<small>Books Proofread</small></span></div>
-        <div className="float-card float-card--2"><svg><use href="#i-star"></use></svg><span>4.9/5<small>Client Rating</small></span></div>
-        <div className="float-card float-card--3"><svg><use href="#i-shield"></use></svg><span>99.9%<small>Error Catch Rate</small></span></div>
-      </div>
+        <ul className="proofsheet__legend">
+          <li><b>sp</b> spelling</li>
+          <li><b>&#8963;</b> insert</li>
+          <li><b>gr</b> grammar</li>
+        </ul>
+        <figcaption>Illustrative proof sheet</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -77,13 +107,13 @@ export default function Page() {
 {/*============================ FOLD 1 — Proof stats strip ============================ */}
 <section className="press">
   <div className="container">
-    <p className="press__label">Proofreading By The Numbers</p>
+    <p className="press__label">What Every Proofread Includes</p>
     <div className="press__row">
-      <span>600+ Books Proofread</span>
-      <span>99.9% Error Catch Rate</span>
-      <span>4.9/5 Average Rating</span>
-      <span>48-Hr Rush Option Available</span>
-      <span>10+ Yrs Combined Experience</span>
+      <span>Style Sheet From Your Manuscript</span>
+      <span>Two Independent Passes</span>
+      <span>Final Formatting Check</span>
+      <span>Print &amp; eBook Ready</span>
+      <span>Free Sample Proofread</span>
     </div>
   </div>
 </section>
@@ -115,6 +145,18 @@ export default function Page() {
         <a href="#contact" className="btn btn--ghost-dark">Get a Custom Quote</a>
       </div>
     </div>
+  </div>
+</section>
+
+{/*============================ Proof marks (interactive) ============================ */}
+<section className="section section--cream" id="marks">
+  <div className="container">
+    <div className="section-head center">
+      <p className="eyebrow">See What We Catch</p>
+      <h2>The Small Slips a Proofread Finds</h2>
+      <p className="lede">Switch between marked-up and clean copy, and filter by the kind of error.</p>
+    </div>
+    <ProofMarks passage={PROOF_PASSAGE} />
   </div>
 </section>
 
@@ -158,7 +200,7 @@ export default function Page() {
   <div className="container">
     <div className="cta-banner reveal">
       <div className="cta-banner__copy">
-        <h2>Join 600+ Authors Who Published Error-Free</h2>
+        <h2>Send Us a Sample Chapter, Proofread Free</h2>
         <p>Send us a sample chapter and we&apos;ll proofread it free, so you can see exactly the level of detail we bring to every page.</p>
         <a href="#contact" className="btn btn--primary">Get My Free Sample <svg><use href="#i-arrow-right"></use></svg></a>
       </div>
@@ -273,10 +315,10 @@ export default function Page() {
     </div>
 
     <div className="collage" aria-hidden="true">
-      <div className="collage-card"><svg><use href="#i-check-circle"></use></svg><strong>600+</strong><span>Books Proofread</span></div>
-      <div className="collage-card"><svg><use href="#i-star"></use></svg><strong>4.9/5</strong><span>Average Client Rating</span></div>
+      <div className="collage-card"><svg><use href="#i-check-circle"></use></svg><strong>Two Passes</strong><span>Two independent proofreaders</span></div>
+      <div className="collage-card"><svg><use href="#i-search"></use></svg><strong>Style Sheet</strong><span>Built from your manuscript</span></div>
       <div className="collage-card play"><span className="play-btn"><svg><use href="#i-play"></use></svg></span><span>See how it works</span></div>
-      <div className="collage-card"><svg><use href="#i-clock"></use></svg><strong>100%</strong><span>On-Time Delivery</span></div>
+      <div className="collage-card"><svg><use href="#i-clock"></use></svg><strong>Rush Option</strong><span>48-hour proofread available</span></div>
     </div>
   </div>
 </section>

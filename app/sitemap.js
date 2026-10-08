@@ -1,3 +1,5 @@
+import { getBlogPosts } from "@/lib/blog/posts";
+
 const ROUTES = [
   "",
   "about-us",
@@ -11,6 +13,7 @@ const ROUTES = [
   "book-cover-design",
   "book-marketing",
   "case-studies",
+  "blog",
   "contact",
   "privacy-policy",
   "terms-of-service",
@@ -21,7 +24,9 @@ export default function sitemap() {
   const base = "https://www.connectwithwriter.com";
   const now = new Date();
 
-  return ROUTES.map((route) => ({
+  const blogRoutes = getBlogPosts().map((post) => `blog/${post.slug}`);
+
+  return [...ROUTES, ...blogRoutes].map((route) => ({
     url: `${base}/${route}`,
     lastModified: now,
   }));

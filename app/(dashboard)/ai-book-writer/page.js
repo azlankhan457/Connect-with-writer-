@@ -1,5 +1,7 @@
-import SettingsForm from "@/components/dashboard/SettingsForm";
 import OutlineBuilder from "@/components/dashboard/OutlineBuilder";
+import PreviewNotice from "@/components/dashboard/PreviewNotice";
+
+export const metadata = { title: "AI Book Writer" };
 
 const AI_OUTLINE_SAMPLES = [
   "Introduce the protagonist and their ordinary world",
@@ -12,29 +14,29 @@ const AI_OUTLINE_SAMPLES = [
 export default function AiBookWriterPage() {
   return (
     <>
-      <div className="app-header" style={{ textAlign: "center", maxWidth: "680px", marginInline: "auto" }}>
-        <p className="eyebrow" style={{ justifyContent: "center", color: "var(--orange-dark)", fontWeight: "800", fontSize: ".8rem", letterSpacing: ".06em", textTransform: "uppercase", marginBottom: ".6rem" }}>
+      <div className="app-header app-header--center app-header--wide">
+        <p className="eyebrow app-eyebrow">
           Flagship Tool
         </p>
-        <h1 style={{ fontSize: "clamp(1.8rem,2.8vw,2.4rem)" }}>Write Your Book With AI</h1>
-        <p style={{ marginInline: "auto" }}>Turn a title, genre, and chapter outline into a full first draft — in your voice, ready for your editor.</p>
+        <h1>Write Your Book With AI</h1>
+        <p>Turn a title, genre, and chapter outline into a full first draft — in your voice, ready for your editor.</p>
       </div>
 
-      <div className="app-card" style={{ maxWidth: "960px", marginInline: "auto" }}>
-        <SettingsForm>
-          {({ isSaved }) => (
+      <div className="app-card app-card--form app-card--form-wide">
+        <PreviewNotice />
+        <form noValidate>
             <>
               <div className="field-grid-2">
                 <div className="app-field">
                   <label htmlFor="bw-lang">Language</label>
                   <div className="select-wrap">
-                    <select defaultValue="🇺🇸 English (US)" id="bw-lang">
-                      <option>🇺🇸 English (US)</option>
-                      <option>🇬🇧 English (UK)</option>
-                      <option>🇪🇸 Spanish</option>
-                      <option>🇫🇷 French</option>
+                    <select defaultValue="English (US)" id="bw-lang">
+                      <option>English (US)</option>
+                      <option>English (UK)</option>
+                      <option>Spanish</option>
+                      <option>French</option>
                     </select>
-                    <svg>
+                    <svg aria-hidden="true">
                       <use href="#i-chevron-down"></use>
                     </svg>
                   </div>
@@ -50,7 +52,7 @@ export default function AiBookWriterPage() {
                       <option>Nonfiction — Business</option>
                       <option>Children&apos;s — Picture Book</option>
                     </select>
-                    <svg>
+                    <svg aria-hidden="true">
                       <use href="#i-chevron-down"></use>
                     </svg>
                   </div>
@@ -76,7 +78,7 @@ export default function AiBookWriterPage() {
                       <option>Fast-Paced &amp; Gripping</option>
                       <option>Formal &amp; Authoritative</option>
                     </select>
-                    <svg>
+                    <svg aria-hidden="true">
                       <use href="#i-chevron-down"></use>
                     </svg>
                   </div>
@@ -95,7 +97,7 @@ export default function AiBookWriterPage() {
               </div>
 
               <OutlineBuilder
-                aiFillLabel="Write the outline with AI"
+                aiFillLabel="Insert sample outline"
                 aiFillSamples={AI_OUTLINE_SAMPLES}
                 allowRemove
                 initialRows={[
@@ -105,17 +107,13 @@ export default function AiBookWriterPage() {
                 placeholderPrefix="Chapter"
               />
 
-              <div style={{ textAlign: "center", marginTop: "2rem" }}>
-                <button className="app-btn app-btn--dark" style={{ padding: ".95rem 2.6rem" }} type="submit">
-                  {isSaved ? "Saved ✓" : "Write My Book"}
+              <div className="form-actions">
+                <button className="app-btn app-btn--dark" disabled type="submit">
+                  Write My Book · Coming soon
                 </button>
-                <p style={{ fontSize: ".8rem", color: "var(--ink-faint)", marginTop: ".8rem" }}>
-                  This will use approximately 1,200 words from your plan.
-                </p>
               </div>
             </>
-          )}
-        </SettingsForm>
+        </form>
       </div>
     </>
   );

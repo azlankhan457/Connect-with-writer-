@@ -2,6 +2,8 @@ import PortfolioSlider from "@/components/PortfolioSlider";
 import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
+import BookCover from "@/components/BookCover";
+import DetailTabs from "@/components/services/DetailTabs";
 
 const PORTFOLIO_BOOKS = [
   { title: "Now Available", author: "Connect with Writer", genre: "Business", gradient: "linear-gradient(155deg,#4a3a1d,#241c0d)" },
@@ -30,15 +32,55 @@ const FAQS = [
   { q: "Do you help with book launches, not just publishing?", a: "Yes. We coordinate your publishing timeline with a launch and marketing plan so your book has real momentum in its first weeks, not just a listing that goes quiet." },
 ];
 
+const PUBLISHING_ROUTES = [
+  {
+    id: "self",
+    label: "Self-publishing",
+    title: "Publish it yourself, with support at every step",
+    text: "You stay in control of your book and your rights while we handle the technical work.",
+    genre: "Business",
+    points: [
+      "ISBN registration",
+      "Print and eBook formatting",
+      "Distribution setup so readers can find the book",
+      "You keep your rights",
+    ],
+  },
+  {
+    id: "traditional",
+    label: "Traditional deal",
+    title: "Prepare for agents and publishers",
+    text: "If you want to approach agents or publishers, we help you plan how to submit.",
+    genre: "Fiction",
+    points: [
+      "Submission strategy",
+      "A manuscript that is edited and ready to send",
+      "Guidance on which route fits your goals",
+    ],
+  },
+  {
+    id: "unsure",
+    label: "Not sure yet",
+    title: "Talk it through first",
+    text: "Many authors start without knowing which route suits them. A conversation usually makes it clearer.",
+    genre: "Memoir",
+    points: [
+      "A free publishing consultation",
+      "Both routes explained side by side",
+      "No pressure to decide before you are ready",
+    ],
+  },
+];
+
 export default function Page() {
   return (
     <>
 
 
 {/*============================ HERO ============================ */}
-<section className="hero">
-  <div className="container hero-grid">
-    <div className="hero-copy">
+<section className="svc-hero">
+  <div className="container svc-hero__grid">
+    <div className="svc-hero__copy">
       <p className="eyebrow">Full-Service Book Publishing</p>
       <h1>Book Publishing Services That Take Your Manuscript From File to Bookstore Shelf</h1>
       <p className="lede">Whether you&apos;re self-publishing or pursuing a traditional deal, our team handles ISBN registration, distribution setup, formatting, and submission strategy — so your finished book actually reaches readers.</p>
@@ -46,29 +88,18 @@ export default function Page() {
         <a href="#contact" className="btn btn--primary">Get a Free Publishing Consultation <svg><use href="#i-arrow-right"></use></svg></a>
         <a href="#portfolio" className="btn btn--ghost-dark">See Our Work</a>
       </div>
-      <div className="hero-trust">
-        <div className="avatar-stack" aria-hidden="true">
-          <span style={{background: "var(--orange)"}}>JM</span>
-          <span style={{background: "var(--ink)"}}>AK</span>
-          <span style={{background: "var(--orange-deep)"}}>RT</span>
-          <span style={{background: "var(--orange-dark)"}}>+250</span>
-        </div>
-        <p className="hero-trust-text">
-          <span className="stars" aria-hidden="true"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></span>
-          <strong>4.9 / 5 average rating</strong>from 250+ authors we&apos;ve worked with
-        </p>
-      </div>
+      <p className="svc-hero__note"><strong>Self-publishing or traditional</strong>ISBN, formatting, distribution and submission strategy</p>
     </div>
-
-    <div className="hero-visual">
-      <div className="hero-art">
-        <div className="hero-art__blob" aria-hidden="true"></div>
-        <div className="hero-art__book" aria-hidden="true">
-          <svg><use href="#i-rocket" style={{color: "var(--orange-dark)"}}></use></svg>
-        </div>
-        <div className="float-card float-card--1"><svg><use href="#i-book-open"></use></svg><span>300+<small>Books Published</small></span></div>
-        <div className="float-card float-card--2"><svg><use href="#i-star"></use></svg><span>4.9/5<small>Client Rating</small></span></div>
-        <div className="float-card float-card--3"><svg><use href="#i-shield"></use></svg><span>100%<small>Rights Retained</small></span></div>
+    <div className="svc-hero__visual">
+      <div className="road">
+        <ol className="road__list">
+          <li>Manuscript ready<small>Edited and proofread</small></li>
+          <li>Interior formatting<small>Layout for print and eBook</small></li>
+          <li>Cover &amp; metadata<small>Prepared for retailers</small></li>
+          <li>ISBN &amp; distribution<small>Registration and setup</small></li>
+          <li>Launch<small>Submission strategy and release</small></li>
+        </ol>
+        <BookCover className="road__book" genre="Business" title="Publishing roadmap sample" />
       </div>
     </div>
   </div>
@@ -77,13 +108,13 @@ export default function Page() {
 {/*============================ FOLD 1 — Proof stats strip ============================ */}
 <section className="press">
   <div className="container">
-    <p className="press__label">Book Publishing By The Numbers</p>
+    <p className="press__label">What Every Publishing Project Covers</p>
     <div className="press__row">
-      <span>300+ Books Published</span>
-      <span>15+ Distribution Channels</span>
-      <span>4.9/5 Average Rating</span>
-      <span>100% Author-Owned Rights</span>
-      <span>10+ Yrs Publishing Experience</span>
+      <span>ISBN Registration</span>
+      <span>Interior Formatting</span>
+      <span>Distribution Setup</span>
+      <span>Submission Strategy</span>
+      <span>Author-Owned Rights</span>
     </div>
   </div>
 </section>
@@ -115,6 +146,18 @@ export default function Page() {
         <a href="#contact" className="btn btn--ghost-dark">Get a Custom Quote</a>
       </div>
     </div>
+  </div>
+</section>
+
+{/*============================ Publishing routes (interactive) ============================ */}
+<section className="section section--cream" id="routes">
+  <div className="container">
+    <div className="section-head center">
+      <p className="eyebrow">Choose Your Route</p>
+      <h2>Which Publishing Route Fits You?</h2>
+      <p className="lede">Two common routes, one team to guide you through either.</p>
+    </div>
+    <DetailTabs items={PUBLISHING_ROUTES} label="Publishing route" />
   </div>
 </section>
 
@@ -158,7 +201,7 @@ export default function Page() {
   <div className="container">
     <div className="cta-banner reveal">
       <div className="cta-banner__copy">
-        <h2>Join 300+ Authors Who&apos;ve Published With Us</h2>
+        <h2>Ready to Take Your Book to Readers?</h2>
         <p>Book a free consultation and we&apos;ll map the exact publishing path that fits your goals, budget, and timeline.</p>
         <a href="#contact" className="btn btn--primary">Book Your Free Consultation <svg><use href="#i-arrow-right"></use></svg></a>
       </div>
@@ -273,10 +316,10 @@ export default function Page() {
     </div>
 
     <div className="collage" aria-hidden="true">
-      <div className="collage-card"><svg><use href="#i-book-open"></use></svg><strong>300+</strong><span>Books Published</span></div>
-      <div className="collage-card"><svg><use href="#i-star"></use></svg><strong>4.9/5</strong><span>Average Client Rating</span></div>
+      <div className="collage-card"><svg><use href="#i-book-open"></use></svg><strong>ISBN &amp; Setup</strong><span>Registration and distribution handled</span></div>
+      <div className="collage-card"><svg><use href="#i-shield"></use></svg><strong>Your Rights</strong><span>Author-owned on every project</span></div>
       <div className="collage-card play"><span className="play-btn"><svg><use href="#i-play"></use></svg></span><span>See how it works</span></div>
-      <div className="collage-card"><svg><use href="#i-clock"></use></svg><strong>100%</strong><span>On-Time Delivery</span></div>
+      <div className="collage-card"><svg><use href="#i-edit"></use></svg><strong>Formatting</strong><span>Interior layout for your format</span></div>
     </div>
   </div>
 </section>

@@ -1,79 +1,42 @@
-import Link from "next/link";
+import BlogCard from "@/components/BlogCard";
 import { getBlogPosts } from "@/lib/blog/posts";
 
 export const metadata = {
   title: "Blog",
   description:
-    "Helpful articles and practical guides for authors, ghostwriters, and publishing teams.",
+    "Helpful articles and practical guides for authors on writing, planning, editing and publishing a book.",
 };
 
 export default function BlogPage() {
-  const posts = getBlogPosts();
+  const [featured, ...rest] = getBlogPosts();
 
   return (
-    <main
-      id="main"
-      className="container"
-      style={{ paddingBlock: "clamp(72px, 10vw, 120px)" }}
-    >
-      <section
-        className="page-hero"
-        style={{
-          marginBottom: "2.4rem",
-          borderRadius: "24px",
-          padding: "clamp(32px, 6vw, 56px)",
-        }}
-      >
-        <div className="page-hero-inner">
+    <>
+      <section className="about-hero">
+        <div className="container about-hero__copy reveal">
           <p className="eyebrow">From the Blog</p>
           <h1>
-            Practical advice for authors who want to write, publish, and grow
+            Practical advice for authors who want to write, publish and grow
             with confidence.
           </h1>
           <p className="lede">
-            These starter posts cover writing, editing, publishing, and the
-            decisions that matter most as your book comes to life.
+            Short, plain-language guides on writing, planning, editing and
+            publishing, for the decisions that matter most as your book comes
+            to life.
           </p>
         </div>
       </section>
 
-      <section
-        className="blog-grid"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}
-      >
-        {posts.map((post) => (
-          <article className="blog-card" key={post.slug}>
-            <div
-              className="blog-card__media"
-              style={{
-                backgroundImage: `url(${post.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-            <div className="blog-card__body">
-              <span className="blog-tag">{post.category}</span>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-              <div className="blog-meta">
-                <span>
-                  {new Date(post.date).toLocaleDateString("en", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </span>
-                <Link className="read-more" href={`/blog/${post.slug}`}>
-                  Read more
-                  <svg>
-                    <use href="#i-arrow-right"></use>
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </article>
-        ))}
+      <section className="section section--cream">
+        <div className="container">
+          <BlogCard post={featured} featured />
+          <div className="blog-grid blog-grid--spaced">
+            {rest.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </div>
       </section>
-    </main>
+    </>
   );
 }

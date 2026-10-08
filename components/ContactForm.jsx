@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { submitContact } from "@/lib/submitContact";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function ContactForm({ heading = "Tell Us About Your Book", blurb }) {
-  const [values, setValues] = useState({ name: "", email: "", phone: "", message: "" });
+  const [values, setValues] = useState({ name: "", email: "", phone: "", message: "", website: "" });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -29,18 +31,23 @@ export default function ContactForm({ heading = "Tell Us About Your Book", blurb
     return Object.keys(nextErrors).length === 0;
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Matches the original site's simulated-send delay; swap for a real API call later.
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setValues({ name: "", email: "", phone: "", message: "" });
-      setErrors({});
-    }, 600);
+    setSubmitError("");
+    const result = await submitContact(values);
+    setIsSubmitting(false);
+
+    if (!result.ok) {
+      setIsSubmitted(false);
+      setSubmitError(result.error);
+      return;
+    }
+    setIsSubmitted(true);
+    setValues({ name: "", email: "", phone: "", message: "", website: "" });
+    setErrors({});
   }
 
   return (
@@ -103,6 +110,10 @@ export default function ContactForm({ heading = "Tell Us About Your Book", blurb
             {errors.message}
           </span>
         </div>
+        <div aria-hidden="true" className="hp-field">
+          <label htmlFor="bf-website">Leave this field empty</label>
+          <input autoComplete="off" id="bf-website" name="website" onChange={handleChange} tabIndex={-1} type="text" value={values.website} />
+        </div>
         <div className="form-foot">
           <p className="privacy-note">
             By submitting this form, you agree to our <Link href="/privacy-policy">Privacy Policy</Link>. We&apos;ll
@@ -112,6 +123,11 @@ export default function ContactForm({ heading = "Tell Us About Your Book", blurb
             {isSubmitting ? "Sending…" : "Submit"}
           </button>
         </div>
+        {submitError && (
+          <p className="form-alert" role="alert">
+            {submitError}
+          </p>
+        )}
         <div className={`form-success${isSubmitted ? " is-visible" : ""}`} role="status">
           <svg>
             <use href="#i-check-circle"></use>

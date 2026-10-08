@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
+import { TOOLS } from "@/lib/dashboardTools";
 
 // Note: the original static mockup had several nav links pointing at the
 // wrong pages (e.g. "All Tools" linked to the AI tool page, "Team" and
@@ -13,7 +14,7 @@ import { auth } from "@/lib/firebase/client";
 const NAV_ITEMS = [
   { href: "/dashboard", icon: "i-home", label: "Dashboard" },
   { href: "/ai-book-writer", icon: "i-wand", label: "AI Book Writer" },
-  { href: "/all-tools", icon: "i-grid", label: "All Tools", badge: "42" },
+  { href: "/all-tools", icon: "i-grid", label: "All Tools", badge: String(TOOLS.length) },
   { href: "/my-content", icon: "i-folder", label: "My Content" },
 ];
 
@@ -91,7 +92,7 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
             <span className="app-sidebar__plan-words">1,500 words left</span>
           </div>
           <div className="app-progress">
-            <div className="app-progress__fill" style={{ width: "100%" }}></div>
+            <div className="app-progress__fill"></div>
           </div>
           <Link className="app-upgrade-btn" href="/account-settings">
             <svg>
@@ -101,9 +102,10 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
           </Link>
         </div>
 
-        <nav className="app-nav">
+        <nav aria-label="Dashboard" className="app-nav">
           {NAV_ITEMS.map((item) => (
             <Link
+              aria-current={pathname === item.href ? "page" : undefined}
               className={pathname === item.href ? "is-active" : ""}
               href={item.href}
               key={item.href}
@@ -118,6 +120,9 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
           <div className="app-nav-divider"></div>
           {NAV_ITEMS_BOTTOM.map((item) => (
             <Link
+              aria-current={
+                pathname === item.href.split("#")[0] ? "page" : undefined
+              }
               className={
                 pathname === item.href.split("#")[0] ? "is-active" : ""
               }
@@ -136,9 +141,12 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
           className={`app-account${isAccountOpen ? " is-open" : ""}`}
           ref={accountRef}
         >
-          <div
+          <button
+            aria-expanded={isAccountOpen}
+            aria-haspopup="menu"
             className="app-account__trigger"
             onClick={() => setIsAccountOpen((v) => !v)}
+            type="button"
           >
             <span className="app-account__avatar">{initials || "?"}</span>
             <span className="app-account__name">
@@ -147,7 +155,7 @@ export default function AppSidebar({ user, isMobileOpen, onCloseMobile }) {
             <svg>
               <use href="#i-chevron-down"></use>
             </svg>
-          </div>
+          </button>
           {isAccountOpen && (
             <div className="app-account__menu">
               <Link href="/account-settings">

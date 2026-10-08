@@ -14,7 +14,7 @@ export default function AppShell({ user, children }) {
         <AppSidebar isMobileOpen={isMobileOpen} onCloseMobile={() => setIsMobileOpen(false)} user={user} />
         <div className="app-main">
           <AppTopbar onToggleMobile={() => setIsMobileOpen((v) => !v)} />
-          <div className="app-content">{children}</div>
+          <main className="app-content" id="main">{children}</main>
         </div>
       </div>
     </CopyToastProvider>

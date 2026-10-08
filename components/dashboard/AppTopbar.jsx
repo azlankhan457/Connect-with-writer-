@@ -16,7 +16,7 @@ export default function AppTopbar({ onToggleMobile }) {
         </svg>
       </button>
       <div className="app-topbar__msg">
-        <svg style={{ width: "18px", height: "18px" }}>
+        <svg aria-hidden="true" className="app-topbar__icon">
           <use href="#i-zap"></use>
         </svg>
         <span>

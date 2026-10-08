@@ -2228,6 +2228,297 @@
 
 }
 
+/* ===== Auth pages: visual-only refinements ===== */
+.auth-shell {
+  min-height: 100dvh;
+}
+
+.auth-visual .auth-visual__mark {
+  width: 34px;
+  height: 34px;
+}
+
+.auth-visual__points {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: .7rem;
+}
+
+.auth-visual__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  font-size: .92rem;
+  color: rgba(255, 255, 255, .92);
+}
+
+.auth-visual__points svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.auth-visual__shelf {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.auth-visual .auth-visual__book {
+  --book-w: clamp(70px, 7vw, 110px);
+}
+
+@media (max-height: 760px) {
+  .auth-visual__shelf {
+    display: none;
+  }
+}
+
+.auth-back-link {
+  margin-bottom: 1rem;
+}
+
+.app-btn--block {
+  width: 100%;
+  justify-content: center;
+}
+
+.field-grid-2--tight {
+  gap: 1.15rem;
+}
+
+.auth-row-between--spaced {
+  margin-bottom: 1.1rem;
+}
+
+.password-strength span.is-on {
+  background: var(--orange-dark);
+}
+
+.auth-error--info {
+  background: var(--orange-tint);
+  color: var(--orange-deep);
+  border-color: var(--orange);
+}
+
+.auth-link--button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.auth-link:focus-visible,
+.auth-alt-btn:focus-visible,
+.auth-toggle-visibility:focus-visible {
+  outline: 3px solid var(--orange-dark);
+  outline-offset: 2px;
+}
+
+/* ===== Dashboard shell: visual-only refinements ===== */
+.app-progress__fill {
+  width: 100%;
+}
+
+.app-topbar__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.app-account__trigger {
+  width: 100%;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.app-account__name {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-nav a:focus-visible,
+.app-account__trigger:focus-visible,
+.app-account__menu a:focus-visible,
+.app-account__menu button:focus-visible,
+.app-upgrade-btn:focus-visible,
+.app-topbar__cta:focus-visible,
+.app-mobile-toggle:focus-visible,
+.tool-card:focus-visible,
+.app-btn:focus-visible,
+.view-toggle button:focus-visible {
+  outline: 3px solid var(--orange-dark);
+  outline-offset: 2px;
+}
+
+.app-header--split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.empty-state--spaced {
+  margin-top: 1.5rem;
+}
+
+.content-note {
+  margin: 0 0 1rem;
+  font-size: .85rem;
+  color: var(--ink-soft);
+}
+
+.autopilot-copy__lede {
+  max-width: 46ch;
+  font-size: .95rem;
+  color: var(--ink-soft);
+}
+
+.app-btn__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.mini-card__icon {
+  width: 14px;
+  height: 14px;
+  color: var(--ink-faint);
+}
+
+.autopilot-visual__note {
+  margin: 0 0 .5rem;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-card,
+  .content-card {
+    transition: none;
+  }
+
+  .tool-card:hover,
+  .content-card:hover {
+    transform: none;
+  }
+}
+
+/* ===== 8c: honest preview states for unfinished dashboard areas ===== */
+.preview-notice {
+  margin: 0 0 1.25rem;
+  padding: .7rem .9rem;
+  border-radius: var(--r-sm);
+  background: var(--orange-tint);
+  color: var(--orange-deep);
+  font-size: .85rem;
+}
+
+.app-header--center {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.app-header--wide {
+  max-width: 680px;
+}
+
+.app-header--center p {
+  margin-inline: auto;
+}
+
+.app-eyebrow {
+  justify-content: center;
+  margin-bottom: .6rem;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--orange-dark);
+}
+
+.app-card--form {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.app-card--form-wide {
+  max-width: 960px;
+}
+
+.app-card--settings {
+  max-width: 760px;
+}
+
+.form-actions {
+  margin-top: 1.8rem;
+  text-align: center;
+}
+
+.app-btn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.outline-head {
+  margin-bottom: .7rem;
+}
+
+.outline-head__label {
+  font-weight: 700;
+}
+
+.upsell-banner--flush {
+  margin-bottom: 0;
+}
+
+.invite-row__fields {
+  display: contents;
+  border: 0;
+  padding: 0;
+}
+
+.invite-row__role {
+  flex: 0 0 180px;
+}
+
+.select-wrap--fixed {
+  width: 200px;
+}
+
+.settings-row__value {
+  font-size: .92rem;
+  color: var(--ink-soft);
+}
+
+.settings-note {
+  margin: 1rem 0 0;
+  font-size: .88rem;
+  color: var(--ink-soft);
+}
+
+.connect-box__title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+input[readonly] {
+  background: var(--cream);
+  cursor: default;
+}
+
 /* ===== Account dropdown menu (new — original had a non-functional toggle) ===== */
 .app-account {
   position: relative;

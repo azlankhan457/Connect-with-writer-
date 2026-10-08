@@ -96,12 +96,12 @@ function VerifyForm() {
       </p>
 
       {error && (
-        <div className="auth-error" style={{ display: "block" }}>
+        <div className="auth-error is-visible" role="alert">
           {error}
         </div>
       )}
       {resendMessage && (
-        <div className="auth-error" style={{ display: "block", background: "var(--orange-tint)", color: "var(--orange-deep)" }}>
+        <div className="auth-error auth-error--info is-visible" role="status">
           {resendMessage}
         </div>
       )}
@@ -112,9 +112,8 @@ function VerifyForm() {
           <OtpCodeInput onChange={setCode} value={code} />
         </div>
         <button
-          className="app-btn app-btn--dark"
+          className="app-btn app-btn--dark app-btn--block"
           disabled={isSubmitting}
-          style={{ width: "100%", justifyContent: "center" }}
           type="submit"
         >
           {isSubmitting ? "Verifying\u2026" : "Verify & Continue"}
@@ -123,7 +122,7 @@ function VerifyForm() {
 
       <p className="auth-footer-link">
         Didn&apos;t get a code?{" "}
-        <button className="auth-link" disabled={isResending} onClick={handleResend} style={{ background: "none", border: "none", cursor: "pointer" }} type="button">
+        <button className="auth-link auth-link--button" disabled={isResending} onClick={handleResend} type="button">
           {isResending ? "Sending\u2026" : "Resend it"}
         </button>
       </p>

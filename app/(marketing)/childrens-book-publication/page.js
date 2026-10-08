@@ -1,7 +1,9 @@
+import Link from "next/link";
 import PortfolioSlider from "@/components/PortfolioSlider";
 import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
+import DetailTabs from "@/components/services/DetailTabs";
 
 const PORTFOLIO_BOOKS = [
   { title: "Pip's Big Day", author: "L. Sorensen", genre: "Picture Book", gradient: "linear-gradient(155deg,#5a2a45,#280f1e)" },
@@ -30,46 +32,76 @@ const FAQS = [
   { q: "Who owns the rights to my children's book?", a: "You retain 100% ownership of your manuscript, illustrations (if commissioned through us), and royalties once your book is published." },
 ];
 
+const AGE_BANDS = [
+  {
+    id: "board",
+    label: "Board books",
+    badge: "0-3",
+    title: "Very short text on sturdy pages",
+    text: "For the youngest readers, every word has to earn its place.",
+    points: ["Very few words per page", "Rhyme, rhythm and repetition", "Simple, bold images that are easy to recognise"],
+  },
+  {
+    id: "picture",
+    label: "Picture books",
+    badge: "3-8",
+    title: "The classic read-aloud format",
+    text: "Picture books are usually around 32 pages, and the words and pictures share the storytelling.",
+    points: ["Text that sounds good read aloud", "Page turns that build surprise", "A story arc a young child can follow"],
+  },
+  {
+    id: "early",
+    label: "Early readers",
+    badge: "5-8",
+    title: "Books children can start reading themselves",
+    text: "Early readers use simple vocabulary and short sentences, with pictures that support the text.",
+    points: ["Controlled vocabulary", "Short chapters or sections", "Confidence-building repetition"],
+  },
+  {
+    id: "chapter",
+    label: "Chapter books",
+    badge: "7-12",
+    title: "Longer stories, fewer pictures",
+    text: "Chapter books give older children a longer plot, with illustrations as an accent.",
+    points: ["Chapter structure and pacing", "Age-appropriate themes and language", "Spot illustrations where they help"],
+  },
+];
+
 export default function Page() {
   return (
     <>
 
 
 {/*============================ HERO ============================ */}
-<section className="hero">
-  <div className="container hero-grid">
-    <div className="hero-copy">
+<section className="svc-hero">
+  <div className="container svc-hero__grid">
+    <div className="svc-hero__copy">
       <p className="eyebrow">Children&apos;s Book Publication Services</p>
       <h1>Children&apos;s Book Publication Services That Bring Your Story to Little Readers</h1>
       <p className="lede">From manuscript to printed picture book, we handle age-appropriate editing, illustration coordination, formatting, and distribution — so your children&apos;s story ends up in small hands, not just a drawer.</p>
       <div className="cta-row">
         <a href="#contact" className="btn btn--primary">Get a Free Consultation <svg><use href="#i-arrow-right"></use></svg></a>
-        <a href="#portfolio" className="btn btn--ghost-dark">See Our Work</a>
+        <Link href="/case-studies" className="btn btn--ghost-dark">See Our Work</Link>
       </div>
-      <div className="hero-trust">
-        <div className="avatar-stack" aria-hidden="true">
-          <span style={{background: "var(--orange)"}}>JM</span>
-          <span style={{background: "var(--ink)"}}>AK</span>
-          <span style={{background: "var(--orange-deep)"}}>RT</span>
-          <span style={{background: "var(--orange-dark)"}}>+250</span>
-        </div>
-        <p className="hero-trust-text">
-          <span className="stars" aria-hidden="true"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></span>
-          <strong>4.9 / 5 average rating</strong>from 250+ authors we&apos;ve worked with
-        </p>
-      </div>
+      <p className="svc-hero__note"><strong>Full children&apos;s publishing support</strong>From manuscript to print-ready book</p>
     </div>
-
-    <div className="hero-visual">
-      <div className="hero-art">
-        <div className="hero-art__blob" aria-hidden="true"></div>
-        <div className="hero-art__book" aria-hidden="true">
-          <svg><use href="#i-heart" style={{color: "var(--orange-dark)"}}></use></svg>
+    <div className="svc-hero__visual">
+      <figure>
+        <div aria-hidden="true" className="spread">
+          <div className="spread__art"></div>
+          <div className="spread__text">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
         </div>
-        <div className="float-card float-card--1"><svg><use href="#i-book-open"></use></svg><span>180+<small>Children&apos;s Books Published</small></span></div>
-        <div className="float-card float-card--2"><svg><use href="#i-star"></use></svg><span>4.9/5<small>Client Rating</small></span></div>
-        <div className="float-card float-card--3"><svg><use href="#i-shield"></use></svg><span>100%<small>Author-Owned Rights</small></span></div>
-      </div>
+        <ul className="spread__chips">
+          <li>Ages 0-12</li>
+          <li>Print + eBook</li>
+          <li>Read-aloud pacing</li>
+        </ul>
+        <figcaption>Illustrative picture-book layout</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -77,13 +109,13 @@ export default function Page() {
 {/*============================ FOLD 1 — Proof stats strip ============================ */}
 <section className="press">
   <div className="container">
-    <p className="press__label">Children&apos;s Publishing By The Numbers</p>
+    <p className="press__label">Why Authors Publish Children&apos;s Books With Us</p>
     <div className="press__row">
-      <span>180+ Children&apos;s Books Published</span>
       <span>Ages 0-12 Covered</span>
-      <span>4.9/5 Average Rating</span>
+      <span>Print + eBook Formats</span>
+      <span>Read-Aloud Pacing Checks</span>
       <span>100% Author Ownership</span>
-      <span>8+ Yrs Children&apos;s Publishing Experience</span>
+      <span>NDA On Every Project</span>
     </div>
   </div>
 </section>
@@ -115,6 +147,18 @@ export default function Page() {
         <a href="#contact" className="btn btn--ghost-dark">Get a Custom Quote</a>
       </div>
     </div>
+  </div>
+</section>
+
+{/*============================ Age bands (interactive) ============================ */}
+<section className="section section--cream" id="age-bands">
+  <div className="container">
+    <div className="section-head center">
+      <p className="eyebrow">Know Your Reader</p>
+      <h2>Every Age Band Has Its Own Rules</h2>
+      <p className="lede">Choose an age band to see how a children&apos;s book is shaped for it.</p>
+    </div>
+    <DetailTabs items={AGE_BANDS} label="Age band" />
   </div>
 </section>
 
@@ -158,7 +202,7 @@ export default function Page() {
   <div className="container">
     <div className="cta-banner reveal">
       <div className="cta-banner__copy">
-        <h2>Join 180+ Authors Who&apos;ve Published Children&apos;s Books With Us</h2>
+        <h2>Let&apos;s Turn Your Story Into a Real, Published Children&apos;s Book</h2>
         <p>Book a free consultation and we&apos;ll map exactly what your story needs to become a real, published children&apos;s book.</p>
         <a href="#contact" className="btn btn--primary">Book Your Free Call <svg><use href="#i-arrow-right"></use></svg></a>
       </div>
@@ -272,11 +316,11 @@ export default function Page() {
       </div>
     </div>
 
-    <div className="collage" aria-hidden="true">
-      <div className="collage-card"><svg><use href="#i-book-open"></use></svg><strong>180+</strong><span>Children&apos;s Books Published</span></div>
-      <div className="collage-card"><svg><use href="#i-star"></use></svg><strong>4.9/5</strong><span>Average Client Rating</span></div>
-      <div className="collage-card play"><span className="play-btn"><svg><use href="#i-play"></use></svg></span><span>See how it works</span></div>
-      <div className="collage-card"><svg><use href="#i-clock"></use></svg><strong>100%</strong><span>On-Time Delivery</span></div>
+    <div className="collage">
+      <Link className="collage-card" href="/case-studies"><svg><use href="#i-book-open"></use></svg><strong>Our Work</strong><span>See published books in the case studies</span></Link>
+      <div className="collage-card"><svg><use href="#i-heart"></use></svg><strong>Read-Aloud Ready</strong><span>Pacing checked before print</span></div>
+      <Link className="collage-card play" href="/case-studies"><span className="play-btn" aria-hidden="true"><svg><use href="#i-play"></use></svg></span><span>See how it works</span></Link>
+      <div className="collage-card"><svg><use href="#i-shield"></use></svg><strong>100% Yours</strong><span>You keep all rights</span></div>
     </div>
   </div>
 </section>
@@ -292,7 +336,7 @@ export default function Page() {
         <p>Tell us about your children&apos;s book idea today, and we&apos;ll map out exactly what it needs to become a real, published book.</p>
         <div className="cta-row">
           <a href="#contact" className="btn btn--primary">Get My Free Consultation <svg><use href="#i-arrow-right"></use></svg></a>
-          <a href="#portfolio" className="btn btn--ghost-light">View Our Portfolio</a>
+          <Link href="/case-studies" className="btn btn--ghost-light">View Our Portfolio</Link>
         </div>
       </div>
       <div className="cta2-collage" aria-hidden="true">
@@ -333,27 +377,27 @@ export default function Page() {
         <div className="blog-card__media" style={{background: "var(--orange-tint)"}}><svg style={{color: "var(--orange-deep)"}}><use href="#i-heart"></use></svg></div>
         <div className="blog-card__body">
           <span className="blog-tag">Children&apos;s Publishing</span>
-          <h3><a href="#blog">How to Choose the Right Age Band for Your Children&apos;s Book</a></h3>
+          <h3><Link href="/blog/how-to-choose-a-ghostwriter">How to Choose the Right Age Band for Your Children&apos;s Book</Link></h3>
           <p>Vocabulary, page count, and themes all shift depending on who&apos;s actually going to read your story.</p>
-          <div className="blog-meta"><span>June 18, 2026</span><a className="read-more" href="#blog">Read More <svg><use href="#i-arrow-right"></use></svg></a></div>
+          <div className="blog-meta"><span>June 18, 2026</span><Link className="read-more" href="/blog/how-to-choose-a-ghostwriter">Read More <svg><use href="#i-arrow-right"></use></svg></Link></div>
         </div>
       </article>
       <article className="blog-card">
         <div className="blog-card__media" style={{background: "var(--cream-deep)"}}><svg style={{color: "var(--orange-deep)"}}><use href="#i-book-open"></use></svg></div>
         <div className="blog-card__body">
           <span className="blog-tag">Read-Aloud Tips</span>
-          <h3><a href="#blog">Why Page-Turns Matter More Than You Think in Picture Books</a></h3>
+          <h3><Link href="/blog/self-publishing-vs-traditional">Why Page-Turns Matter More Than You Think in Picture Books</Link></h3>
           <p>The rhythm of a page turn can make or break a bedtime story — here&apos;s how professional editors think about it.</p>
-          <div className="blog-meta"><span>June 1, 2026</span><a className="read-more" href="#blog">Read More <svg><use href="#i-arrow-right"></use></svg></a></div>
+          <div className="blog-meta"><span>June 1, 2026</span><Link className="read-more" href="/blog/self-publishing-vs-traditional">Read More <svg><use href="#i-arrow-right"></use></svg></Link></div>
         </div>
       </article>
       <article className="blog-card">
         <div className="blog-card__media" style={{background: "var(--orange-tint)"}}><svg style={{color: "var(--orange-deep)"}}><use href="#i-rocket"></use></svg></div>
         <div className="blog-card__body">
           <span className="blog-tag">Publishing</span>
-          <h3><a href="#blog">Board Book vs. Picture Book: Which Format Fits Your Story?</a></h3>
+          <h3><Link href="/blog/book-outline-template">Board Book vs. Picture Book: Which Format Fits Your Story?</Link></h3>
           <p>The physical format you choose changes everything from page count to price point — here&apos;s how to decide.</p>
-          <div className="blog-meta"><span>May 22, 2026</span><a className="read-more" href="#blog">Read More <svg><use href="#i-arrow-right"></use></svg></a></div>
+          <div className="blog-meta"><span>May 22, 2026</span><Link className="read-more" href="/blog/book-outline-template">Read More <svg><use href="#i-arrow-right"></use></svg></Link></div>
         </div>
       </article>
     </div>

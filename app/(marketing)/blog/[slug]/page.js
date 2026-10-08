@@ -1,13 +1,22 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog/posts";
+import BlogCard from "@/components/BlogCard";
+import BookCover from "@/components/BookCover";
+import {
+  formatPostDate,
+  getBlogPostBySlug,
+  getBlogPosts,
+  getReadingTime,
+  getRelatedPosts,
+} from "@/lib/blog/posts";
 
 export async function generateStaticParams() {
   return getBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const post = getBlogPostBySlug(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
   if (!post) return {};
 
   return {
@@ -16,52 +25,88 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function BlogPostPage({ params }) {
-  const post = getBlogPostBySlug(params.slug);
+export default async function BlogPostPage({ params }) {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
   if (!post) notFound();
 
   return (
-    <main
-      id="main"
-      className="container"
-      style={{ paddingBlock: "clamp(72px, 10vw, 120px)" }}
-    >
-      <article
-        className="blog-post"
-        style={{ maxWidth: "780px", margin: "0 auto" }}
-      >
-        <Link
-          className="auth-link"
-          href="/blog"
-          style={{ marginBottom: "1rem", display: "inline-flex" }}
-        >
-          ← Back to blog
-        </Link>
-        <p className="eyebrow">{post.category}</p>
-        <h1 style={{ marginBottom: "0.8rem" }}>{post.title}</h1>
-        <p className="lede" style={{ marginBottom: "2rem" }}>
-          {post.excerpt}
-        </p>
-        <div
-          className="blog-post__hero"
-          style={{
-            borderRadius: "24px",
-            overflow: "hidden",
-            marginBottom: "2rem",
-          }}
-        >
-          <img
-            alt={post.title}
-            src={post.image}
-            style={{ width: "100%", height: "320px", objectFit: "cover" }}
-          />
+    <>
+      <section className="about-hero">
+        <div className="container blog-post__head reveal">
+          <Link className="blog-post__back" href="/blog">
+            <svg aria-hidden="true">
+              <use href="#i-arrow-left"></use>
+            </svg>
+            Back to blog
+          </Link>
+          <p className="eyebrow">{post.category}</p>
+          <h1>{post.title}</h1>
+          <p className="lede">{post.excerpt}</p>
+          <p className="blog-post__meta">
+            {formatPostDate(post.date)} · {getReadingTime(post)} min read
+          </p>
         </div>
-        <div style={{ display: "grid", gap: "1rem", color: "var(--ink-soft)" }}>
-          {post.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+      </section>
+
+      <section className="section section--tight">
+        <div className="container">
+          <article className="blog-post">
+            <figure className="blog-post__cover">
+              <BookCover
+                genre={post.genre}
+                title={post.title}
+                className="blog-post__book"
+              />
+            </figure>
+            <div className="blog-post__body">
+              {post.content.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </article>
         </div>
-      </article>
-    </main>
+      </section>
+
+      <section className="section section--tight">
+        <div className="container">
+          <div className="cta-banner">
+            <div>
+              <p className="eyebrow">Talk it through</p>
+              <h2>Have a question about your own book?</h2>
+              <p>
+                Tell us where you are in the process and we&apos;ll suggest a
+                sensible next step, without pressure.
+              </p>
+              <div className="cta-row">
+                <Link className="btn btn--primary" href="/contact">
+                  Get a Free Consultation
+                  <svg aria-hidden="true">
+                    <use href="#i-arrow-right"></use>
+                  </svg>
+                </Link>
+                <Link className="btn btn--ghost-light" href="/case-studies">
+                  See how we work
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--cream">
+        <div className="container">
+          <div className="section-head reveal">
+            <p className="eyebrow">Keep reading</p>
+            <h2>More from the blog</h2>
+          </div>
+          <div className="blog-grid">
+            {getRelatedPosts(post.slug).map((related) => (
+              <BlogCard key={related.slug} post={related} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

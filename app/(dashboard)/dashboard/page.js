@@ -1,6 +1,11 @@
 import Link from "next/link";
 import AssistantWidget from "@/components/ai/AssistantWidget";
 import { getSessionUser } from "@/lib/session";
+import { STARTER_TOOL_NAMES, TOOLS } from "@/lib/dashboardTools";
+
+const STARTER_TOOLS = STARTER_TOOL_NAMES.map((name) =>
+  TOOLS.find((tool) => tool.name === name),
+);
 
 export default async function DashboardPage() {
   const user = await getSessionUser();
@@ -22,10 +27,9 @@ export default async function DashboardPage() {
       <div className="app-card">
         <div className="tool-scroll-head">
           <div>
-            <h2>Most Popular Tools</h2>
+            <h2>Tools to Start With</h2>
             <p>
-              These are the most popular tools and a good place to start. Give
-              them a try!
+              A good place to start. Give them a try!
             </p>
           </div>
           <Link className="tool-all-link" href="/all-tools">
@@ -36,79 +40,27 @@ export default async function DashboardPage() {
           </Link>
         </div>
         <div className="tool-grid">
-          <Link className="tool-card" href="/ai-tool">
-            <svg className="tool-card__ext">
-              <use href="#i-external"></use>
-            </svg>
-            <div className="tool-card__icon">
-              <svg>
-                <use href="#i-book-open"></use>
+          {STARTER_TOOLS.map((tool) => (
+            <Link className="tool-card" href={tool.href} key={tool.name}>
+              <svg aria-hidden="true" className="tool-card__ext">
+                <use href="#i-external"></use>
               </svg>
-            </div>
-            <h3>Chapter Writer</h3>
-            <p>
-              Turn a title and an outline into a fully-structured, publish-ready
-              chapter with this AI editor.
-            </p>
-          </Link>
-          <Link className="tool-card" href="/ai-tool">
-            <svg className="tool-card__ext">
-              <use href="#i-external"></use>
-            </svg>
-            <div className="tool-card__icon">
-              <svg>
-                <use href="#i-pen"></use>
-              </svg>
-            </div>
-            <h3>Blurb &amp; Synopsis Writer</h3>
-            <p>
-              Quickly write a compelling back-cover blurb or query-letter
-              synopsis with our guided writer.
-            </p>
-          </Link>
-          <Link className="tool-card" href="/ai-tool">
-            <svg className="tool-card__ext">
-              <use href="#i-external"></use>
-            </svg>
-            <div className="tool-card__icon">
-              <svg>
-                <use href="#i-refresh"></use>
-              </svg>
-            </div>
-            <h3>Manuscript Rewriter</h3>
-            <p>
-              Rewrite long-form chapters or passages in seconds to sharpen
-              pacing and voice.
-            </p>
-          </Link>
-          <Link className="tool-card" href="/ai-tool">
-            <svg className="tool-card__ext">
-              <use href="#i-external"></use>
-            </svg>
-            <div className="tool-card__icon">
-              <svg>
-                <use href="#i-bulb"></use>
-              </svg>
-            </div>
-            <h3>Book Title Generator</h3>
-            <p>
-              Generate genre-matched title options for any book idea, topic, or
-              outline in seconds.
-            </p>
-          </Link>
+              <div className="tool-card__icon">
+                <svg aria-hidden="true">
+                  <use href={`#${tool.icon}`}></use>
+                </svg>
+              </div>
+              <h3>{tool.name}</h3>
+              <p>{tool.description}</p>
+            </Link>
+          ))}
         </div>
       </div>
       <div className="app-card">
         <div className="autopilot-panel">
           <div className="autopilot-copy">
             <h2>Grow your author platform on autopilot with AI</h2>
-            <p
-              style={{
-                color: "var(--ink-soft)",
-                fontSize: ".95rem",
-                maxWidth: "46ch",
-              }}
-            >
+            <p className="autopilot-copy__lede">
               Just enter your book&apos;s title and genre, and Autopilot will
               generate launch content and suggest changes to help readers
               actually find it.
@@ -140,23 +92,18 @@ export default async function DashboardPage() {
               </li>
             </ul>
             <Link className="app-btn app-btn--dark" href="/ai-tool">
-              <svg style={{ width: "16px", height: "16px" }}>
+              <svg aria-hidden="true" className="app-btn__icon">
                 <use href="#i-zap"></use>
               </svg>
               Activate Autopilot
             </Link>
           </div>
-          <div className="autopilot-visual">
+          <div aria-hidden="true" className="autopilot-visual">
+            <p className="autopilot-visual__note">Sample preview</p>
             <div className="mini-card mini-card--chart">
               <div className="mini-card--chart__top">
                 <span>AVERAGE POSITION</span>
-                <svg
-                  style={{
-                    width: "14px",
-                    height: "14px",
-                    color: "var(--ink-faint)",
-                  }}
-                >
+                <svg aria-hidden="true" className="mini-card__icon">
                   <use href="#i-list"></use>
                 </svg>
               </div>
@@ -186,12 +133,12 @@ export default async function DashboardPage() {
                 <span>Diff.</span>
               </div>
               <div className="mini-table-row">
-                <a href="#">best fantasy books 2026</a>
+                <span>best fantasy books 2026</span>
                 <span>12,100</span>
                 <span>41</span>
               </div>
               <div className="mini-table-row">
-                <a href="#">how to publish a novel</a>
+                <span>how to publish a novel</span>
                 <span>700</span>
                 <span>28</span>
               </div>

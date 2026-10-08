@@ -88,10 +88,10 @@ export default function SignupPage() {
 
   return (
     <AuthShell
-      visualSubtitle="Join thousands of authors using AI to draft, edit, and publish — start free, no credit card required."
+      visualSubtitle="Draft, edit, and publish your book with AI-assisted tools and a team that cares about your voice."
       visualTitle="Every Book Starts With One Page"
     >
-      <div className="auth-back-link" style={{ marginBottom: "1rem" }}>
+      <div className="auth-back-link">
         <Link className="auth-link" href="/">
           ← Back to Home
         </Link>
@@ -100,13 +100,13 @@ export default function SignupPage() {
       <p>Start writing your book with a free trial — no card required.</p>
 
       {error && (
-        <div className="auth-error" style={{ display: "block" }}>
+        <div className="auth-error is-visible" role="alert">
           {error}
         </div>
       )}
 
       <form noValidate onSubmit={handleSubmit}>
-        <div className="field-grid-2" style={{ gap: "1.15rem" }}>
+        <div className="field-grid-2 field-grid-2--tight">
           <div className="auth-field">
             <label htmlFor="su-first">First name</label>
             <div className="auth-input-wrap">
@@ -114,6 +114,7 @@ export default function SignupPage() {
                 <use href="#i-users"></use>
               </svg>
               <input
+                autoComplete="given-name"
                 id="su-first"
                 onChange={(e) => setFirstName(e.target.value)}
                 placeholder="Alex"
@@ -130,6 +131,7 @@ export default function SignupPage() {
                 <use href="#i-users"></use>
               </svg>
               <input
+                autoComplete="family-name"
                 id="su-last"
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder="Miller"
@@ -148,6 +150,7 @@ export default function SignupPage() {
               <use href="#i-mail"></use>
             </svg>
             <input
+              autoComplete="email"
               id="su-email"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
@@ -161,6 +164,7 @@ export default function SignupPage() {
         <div className="auth-field">
           <label htmlFor="su-password">Password</label>
           <PasswordInput
+            autoComplete="new-password"
             id="su-password"
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Create a password"
@@ -168,18 +172,12 @@ export default function SignupPage() {
           />
           <div className="password-strength">
             {[0, 1, 2, 3].map((i) => (
-              <span
-                key={i}
-                style={{
-                  background:
-                    i < strengthScore ? "var(--orange-dark)" : "var(--line)",
-                }}
-              />
+              <span className={i < strengthScore ? "is-on" : ""} key={i} />
             ))}
           </div>
         </div>
 
-        <div className="auth-row-between" style={{ marginBottom: "1.1rem" }}>
+        <div className="auth-row-between auth-row-between--spaced">
           <label className="auth-check">
             <input
               checked={agreed}
@@ -199,9 +197,8 @@ export default function SignupPage() {
         </div>
 
         <button
-          className="app-btn app-btn--dark"
+          className="app-btn app-btn--dark app-btn--block"
           disabled={isSubmitting}
-          style={{ width: "100%", justifyContent: "center" }}
           type="submit"
         >
           {isSubmitting ? "Creating account\u2026" : "Create Free Account"}

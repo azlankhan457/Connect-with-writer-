@@ -45,7 +45,7 @@ export default function PasswordForm() {
   return (
     <form noValidate onSubmit={handleSubmit}>
       {error && (
-        <div className="auth-error" style={{ display: "block", marginBottom: "1rem" }}>
+        <div className="auth-error is-visible" role="alert">
           {error}
         </div>
       )}
