@@ -3,7 +3,6 @@ import PortfolioSlider from "@/components/PortfolioSlider";
 import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
-import DetailTabs from "@/components/services/DetailTabs";
 
 const PORTFOLIO_BOOKS = [
   { title: "Tiny Toes, Big World", author: "R. Okwu", genre: "Picture Book", gradient: "linear-gradient(155deg,#2a5a6a,#0f2830)" },
@@ -32,72 +31,15 @@ const FAQS = [
   { q: "Can you illustrate just a cover if my interior is already done?", a: "Yes, we offer cover-only illustration packages for authors who already have interior art, are eBook-only, or need a fresh cover for an existing book." },
 ];
 
-const CHARACTER_PALETTE = ["#ffd9a8", "#40bee2", "#127591", "#ffd36b", "#8fd0a6"];
-
-const ART_STYLES = [
-  {
-    id: "watercolor",
-    label: "Watercolor",
-    title: "Soft, flowing colour",
-    text: "Gentle washes of colour give a warm, hand-painted feel.",
-    swatches: [
-      { name: "Sky wash", color: "#cfeef7" },
-      { name: "Meadow", color: "#8fd0a6" },
-      { name: "Sun", color: "#ffd36b" },
-      { name: "Blush", color: "#f3b7c3" },
-    ],
-    points: ["Works well for gentle, dreamy stories", "Soft edges and light textures", "A calm, cosy mood"],
-  },
-  {
-    id: "digital",
-    label: "Digital flat",
-    title: "Bold shapes and clean lines",
-    text: "Bright, confident shapes that stay crisp in print and on screen.",
-    swatches: [
-      { name: "Aqua", color: "#40bee2" },
-      { name: "Deep teal", color: "#127591" },
-      { name: "Sun", color: "#ffd36b" },
-      { name: "Coral", color: "#e58a8a" },
-    ],
-    points: ["Great for playful, modern stories", "Easy to keep consistent across a series", "Clear, readable scenes"],
-  },
-  {
-    id: "pencil",
-    label: "Pencil & ink",
-    title: "Expressive line work",
-    text: "Characters come to life through the drawn line, with light touches of colour.",
-    swatches: [
-      { name: "Ink", color: "#212529" },
-      { name: "Graphite", color: "#545c63" },
-      { name: "Paper", color: "#f7fcfd" },
-      { name: "Light wash", color: "#e0f5fb" },
-    ],
-    points: ["Suits quirky, character-led stories", "Works well with a limited palette", "A classic storybook feel"],
-  },
-  {
-    id: "collage",
-    label: "Collage",
-    title: "Layered paper and texture",
-    text: "Cut-paper shapes and layered textures create a tactile, handmade look.",
-    swatches: [
-      { name: "Rose", color: "#e58a8a" },
-      { name: "Gold", color: "#f1c75b" },
-      { name: "Leaf", color: "#5fb585" },
-      { name: "Sky", color: "#7aa7d9" },
-    ],
-    points: ["Great for bright, tactile books", "A distinctive look on the shelf", "Bold colour blocks that young eyes follow"],
-  },
-];
-
 export default function Page() {
   return (
     <>
 
 
 {/*============================ HERO ============================ */}
-<section className="svc-hero">
-  <div className="container svc-hero__grid">
-    <div className="svc-hero__copy">
+<section className="hero">
+  <div className="container hero-grid">
+    <div className="hero-copy">
       <p className="eyebrow">Children&apos;s Book Illustration Services</p>
       <h1>Children&apos;s Book Illustration That Makes Your Story Impossible to Put Down</h1>
       <p className="lede">Our illustrators design characters, build full-spread scenes, and paint covers that match your story&apos;s tone and age band — turning your manuscript into a book kids actually want to hold.</p>
@@ -105,33 +47,23 @@ export default function Page() {
         <a href="#contact" className="btn btn--primary">Get a Free Illustration Quote <svg><use href="#i-arrow-right"></use></svg></a>
         <Link href="/case-studies" className="btn btn--ghost-dark">See Our Work</Link>
       </div>
-      <p className="svc-hero__note"><strong>Original character &amp; scene art</strong>Covers, full spreads, and series bibles</p>
+      <div className="hero-trust">
+        <p className="hero-trust-text">
+          <strong>Original character &amp; scene art</strong>Covers, full spreads, and series bibles
+        </p>
+      </div>
     </div>
-    <div className="svc-hero__visual">
-      <figure>
-        <div aria-hidden="true" className="charsheet">
-          <ul className="charsheet__faces">
-            <li>
-              <div className="face"><i></i></div>
-              Happy
-            </li>
-            <li>
-              <div className="face face--curious"><i></i></div>
-              Curious
-            </li>
-            <li>
-              <div className="face face--wow"><i></i></div>
-              Surprised
-            </li>
-          </ul>
-          <ul className="charsheet__palette">
-            {CHARACTER_PALETTE.map((color) => (
-              <li key={color} style={{ background: color }}></li>
-            ))}
-          </ul>
+
+    <div className="hero-visual">
+      <div className="hero-art">
+        <div className="hero-art__blob" aria-hidden="true"></div>
+        <div className="hero-art__book" aria-hidden="true">
+          <svg><use href="#i-palette" style={{color: "var(--orange-dark)"}}></use></svg>
         </div>
-        <figcaption>Illustrative character sheet</figcaption>
-      </figure>
+        <div className="float-card float-card--1"><svg><use href="#i-palette"></use></svg><span>Full Spreads<small>Characters, scenes &amp; covers</small></span></div>
+        <div className="float-card float-card--2"><svg><use href="#i-heart"></use></svg><span>Kid-Tested<small>Art that holds young attention</small></span></div>
+        <div className="float-card float-card--3"><svg><use href="#i-shield"></use></svg><span>100%<small>Custom Character Art</small></span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -177,18 +109,6 @@ export default function Page() {
         <a href="#contact" className="btn btn--ghost-dark">Get a Custom Quote</a>
       </div>
     </div>
-  </div>
-</section>
-
-{/*============================ Art styles (interactive) ============================ */}
-<section className="section section--cream" id="styles">
-  <div className="container">
-    <div className="section-head center">
-      <p className="eyebrow">Find Your Look</p>
-      <h2>Which Illustration Style Fits Your Story?</h2>
-      <p className="lede">Palettes are shown as a guide. Your illustrator builds the final palette around your story and age band.</p>
-    </div>
-    <DetailTabs items={ART_STYLES} label="Illustration style" />
   </div>
 </section>
 

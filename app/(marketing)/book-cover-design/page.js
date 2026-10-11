@@ -4,7 +4,6 @@ import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
 import BookCover from "@/components/BookCover";
-import DetailTabs from "@/components/services/DetailTabs";
 
 const PORTFOLIO_BOOKS = [
   {
@@ -122,74 +121,6 @@ const FAQS = [
   {
     q: "Can you redesign an existing cover that isn't performing well?",
     a: "Yes. We regularly redesign underperforming covers, starting with the same genre research process to identify exactly what the original cover is missing.",
-  },
-];
-
-const COVER_GENRES = [
-  {
-    id: "thriller",
-    label: "Thriller",
-    genre: "Thriller",
-    title: "Tension that reads at thumbnail size",
-    text: "Thriller covers promise suspense in a glance, because most readers first see them very small.",
-    points: [
-      "Typography: bold, high-contrast titles, often with a large author name",
-      "Palette: dark and limited, with one sharp accent colour",
-      "Composition: one strong focal image with clear room for the title",
-      "Readers expect: mystery and momentum",
-    ],
-  },
-  {
-    id: "memoir",
-    label: "Memoir",
-    genre: "Memoir",
-    title: "Personal, honest and emotionally inviting",
-    text: "A memoir cover should feel like the author, not like a template.",
-    points: [
-      "Typography: a warm serif or understated lettering",
-      "Palette: natural, softer tones",
-      "Composition: an evocative image with generous space around it",
-      "Readers expect: honesty and an emotional hook",
-    ],
-  },
-  {
-    id: "business",
-    label: "Business",
-    genre: "Business",
-    title: "Credible, clear and confident",
-    text: "Business readers decide quickly whether a book is worth their time, so the promise has to be obvious.",
-    points: [
-      "Typography: clean and large, easy to read at any size",
-      "Palette: a confident, limited set of colours",
-      "Composition: simple and uncluttered",
-      "Readers expect: credibility and a clear benefit",
-    ],
-  },
-  {
-    id: "fiction",
-    label: "Fiction",
-    genre: "Fiction",
-    title: "A clear sense of tone and genre",
-    text: "Fiction covers hint at the story without giving it away, and signal the genre at once.",
-    points: [
-      "Typography: matched to the tone, from elegant to playful",
-      "Palette: suggests mood and setting",
-      "Composition: an image that raises a question",
-      "Readers expect: to know what kind of story it is",
-    ],
-  },
-  {
-    id: "selfhelp",
-    label: "Self-Help",
-    genre: "Self-Help",
-    title: "Friendly, hopeful and practical",
-    text: "Self-help covers need to feel encouraging while still making a specific promise.",
-    points: [
-      "Typography: friendly and legible, with a strong title",
-      "Palette: bright, hopeful colours",
-      "Composition: clear and centred, led by the benefit",
-      "Readers expect: encouragement and a practical promise",
-    ],
   },
 ];
 
@@ -353,20 +284,6 @@ export default function Page() {
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/*============================ Genre cover guide (interactive) ============================ */}
-      <section className="section section--cream" id="genres">
-        <div className="container">
-          <div className="section-head center">
-            <p className="eyebrow">Design By Genre</p>
-            <h2>How Each Genre Signals What&apos;s Inside</h2>
-            <p className="lede">
-              Pick a genre to see how typography, colour and composition work together.
-            </p>
-          </div>
-          <DetailTabs items={COVER_GENRES} label="Book genre" />
         </div>
       </section>
 

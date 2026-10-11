@@ -3,7 +3,6 @@ import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
 import BookCover from "@/components/BookCover";
-import SampleEdit from "@/components/services/SampleEdit";
 import Link from "next/link";
 import { getBlogPostBySlug } from "@/lib/blog/posts";
 
@@ -45,104 +44,15 @@ const FAQS = [
   { q: "Can you edit a partial manuscript or just a few chapters?", a: "Yes. We offer sample edits and partial-manuscript packages for authors who want feedback before committing to a full edit." },
 ];
 
-const EDIT_LEVELS = [
-  {
-    id: "developmental",
-    label: "Developmental",
-    summary: "The big picture: structure, pacing, characters and argument.",
-    before:
-      "Maya reached the station and stood on the platform. She was sad because her father had left when she was nine, and she remembered the summer he taught her to fish. The train was late. She waited.",
-    after: [
-      { t: "Maya reached the station and stood on the platform. The train was late. " },
-      {
-        t: "She waited, and the waiting pulled her back to the summer her father taught her to fish, the year before he left.",
-        changed: true,
-      },
-    ],
-    notes: [
-      "Reshapes structure, pacing and character arcs",
-      "Places backstory where it lands hardest",
-      "Delivered as an editorial letter with chapter notes",
-    ],
-  },
-  {
-    id: "line",
-    label: "Line editing",
-    summary: "The sentence level: rhythm, clarity, tone and word choice.",
-    before:
-      "The room was very dark and the very old clock was ticking loudly, which made her feel nervous and a bit afraid.",
-    after: [
-      { t: "The room was dark. " },
-      { t: "An old clock ticked, each beat louder than the last", changed: true },
-      { t: ", and her nerves tightened with every one." },
-    ],
-    notes: [
-      "Tightens wordy or repetitive sentences",
-      "Shows feeling through detail instead of labels",
-      "Keeps your voice, only sharper",
-    ],
-  },
-  {
-    id: "copy",
-    label: "Copyediting",
-    summary: "Grammar, usage, consistency and style rules, applied throughout.",
-    before:
-      "In 1998 the Company opened it's first office on fifth street, and by Nineteen ninety nine they had twelve employee's.",
-    after: [
-      { t: "In 1998" },
-      { t: ",", changed: true },
-      { t: " the " },
-      { t: "company", changed: true },
-      { t: " opened " },
-      { t: "its", changed: true },
-      { t: " first office on " },
-      { t: "Fifth Street", changed: true },
-      { t: ", and by " },
-      { t: "1999", changed: true },
-      { t: " " },
-      { t: "it had", changed: true },
-      { t: " " },
-      { t: "twelve employees", changed: true },
-      { t: "." },
-    ],
-    notes: [
-      "Fixes grammar, usage and punctuation",
-      "Keeps names, numbers and spellings consistent",
-      "Builds a style sheet as it goes",
-    ],
-  },
-  {
-    id: "proof",
-    label: "Final polish",
-    summary: "The last pass for typos and slips before the book goes out.",
-    before:
-      "She said goodbye, and walked out the door. The suitcase was heavy,she didnt look back.",
-    after: [
-      { t: "She said goodbye" },
-      { t: " and", changed: true },
-      { t: " walked out the door. The suitcase was heavy" },
-      { t: "; ", changed: true },
-      { t: "she " },
-      { t: "didn't", changed: true },
-      { t: " look back." },
-    ],
-    notes: [
-      "Catches typos, spacing and stray punctuation",
-      "Done after the text is locked",
-      "See our proofreading service for a full two-pass check",
-    ],
-  },
-];
-
 export default function Page() {
   return (
     <>
 
 
 {/*============================ HERO ============================ */}
-<section className="svc-hero">
-  <div className="container svc-hero__grid">
-    <div className="svc-hero__copy">
+<section className="hero">
+  <div className="container hero-grid">
+    <div className="hero-copy">
       <p className="eyebrow">Professional Book Editing Services</p>
       <h1>Professional Book Editing That Turns a Rough Draft Into a Publish-Ready Manuscript</h1>
       <p className="lede">Our developmental editors and line editors sharpen structure, pacing, characters, and prose — so your manuscript is ready for agents, readers, or publication, without losing your voice.</p>
@@ -150,27 +60,23 @@ export default function Page() {
         <a href="#contact" className="btn btn--primary">Get a Free Manuscript Assessment <svg><use href="#i-arrow-right"></use></svg></a>
         <a href="#portfolio" className="btn btn--ghost-dark">See Our Work</a>
       </div>
-      <p className="svc-hero__note"><strong>Developmental, line &amp; copy editing</strong>Genre-matched editors for fiction and nonfiction</p>
+      <div className="hero-trust">
+        <p className="hero-trust-text">
+          <strong>Developmental, line &amp; copy editing</strong>Genre-matched editors for fiction and nonfiction
+        </p>
+      </div>
     </div>
-    <div className="svc-hero__visual">
-      <figure className="desk">
-        <div className="desk__sheet">
-          <p className="desk__line">
-            Maya <del>was very sad when she</del>
-            <ins>stood on the platform as she</ins> watched the train{" "}
-            <del>come in late</del>
-            <ins>slide in, ten minutes late</ins>.
-          </p>
-          <span className="desk__note">
-            <svg aria-hidden="true">
-              <use href="#i-edit"></use>
-            </svg>
-            Move her father&apos;s backstory to chapter two?
-          </span>
+
+    <div className="hero-visual">
+      <div className="hero-art">
+        <div className="hero-art__blob" aria-hidden="true"></div>
+        <div className="hero-art__book" aria-hidden="true">
+          <svg><use href="#i-edit" style={{color: "var(--orange-dark)"}}></use></svg>
         </div>
-        <span aria-hidden="true" className="desk__pencil"></span>
-        <figcaption>Illustrative sample edit</figcaption>
-      </figure>
+        <div className="float-card float-card--1"><svg><use href="#i-book-open"></use></svg><span>Editorial Letter<small>Detailed, actionable notes</small></span></div>
+        <div className="float-card float-card--2"><svg><use href="#i-edit"></use></svg><span>Track Changes<small>Accept or reject every note</small></span></div>
+        <div className="float-card float-card--3"><svg><use href="#i-shield"></use></svg><span>Your Voice<small>Strengthened, never replaced</small></span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -216,18 +122,6 @@ export default function Page() {
         <a href="#contact" className="btn btn--ghost-dark">Get a Custom Quote</a>
       </div>
     </div>
-  </div>
-</section>
-
-{/*============================ Editing levels (interactive) ============================ */}
-<section className="section section--cream" id="levels">
-  <div className="container">
-    <div className="section-head center">
-      <p className="eyebrow">See The Difference</p>
-      <h2>Four Levels of Editing, Side by Side</h2>
-      <p className="lede">Pick a level to see what an editor changes, and what stays yours.</p>
-    </div>
-    <SampleEdit levels={EDIT_LEVELS} />
   </div>
 </section>
 

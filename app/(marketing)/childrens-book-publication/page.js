@@ -3,7 +3,6 @@ import PortfolioSlider from "@/components/PortfolioSlider";
 import ReviewsSlider from "@/components/ReviewsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import ContactForm from "@/components/ContactForm";
-import DetailTabs from "@/components/services/DetailTabs";
 
 const PORTFOLIO_BOOKS = [
   { title: "Pip's Big Day", author: "L. Sorensen", genre: "Picture Book", gradient: "linear-gradient(155deg,#5a2a45,#280f1e)" },
@@ -32,50 +31,15 @@ const FAQS = [
   { q: "Who owns the rights to my children's book?", a: "You retain 100% ownership of your manuscript, illustrations (if commissioned through us), and royalties once your book is published." },
 ];
 
-const AGE_BANDS = [
-  {
-    id: "board",
-    label: "Board books",
-    badge: "0-3",
-    title: "Very short text on sturdy pages",
-    text: "For the youngest readers, every word has to earn its place.",
-    points: ["Very few words per page", "Rhyme, rhythm and repetition", "Simple, bold images that are easy to recognise"],
-  },
-  {
-    id: "picture",
-    label: "Picture books",
-    badge: "3-8",
-    title: "The classic read-aloud format",
-    text: "Picture books are usually around 32 pages, and the words and pictures share the storytelling.",
-    points: ["Text that sounds good read aloud", "Page turns that build surprise", "A story arc a young child can follow"],
-  },
-  {
-    id: "early",
-    label: "Early readers",
-    badge: "5-8",
-    title: "Books children can start reading themselves",
-    text: "Early readers use simple vocabulary and short sentences, with pictures that support the text.",
-    points: ["Controlled vocabulary", "Short chapters or sections", "Confidence-building repetition"],
-  },
-  {
-    id: "chapter",
-    label: "Chapter books",
-    badge: "7-12",
-    title: "Longer stories, fewer pictures",
-    text: "Chapter books give older children a longer plot, with illustrations as an accent.",
-    points: ["Chapter structure and pacing", "Age-appropriate themes and language", "Spot illustrations where they help"],
-  },
-];
-
 export default function Page() {
   return (
     <>
 
 
 {/*============================ HERO ============================ */}
-<section className="svc-hero">
-  <div className="container svc-hero__grid">
-    <div className="svc-hero__copy">
+<section className="hero">
+  <div className="container hero-grid">
+    <div className="hero-copy">
       <p className="eyebrow">Children&apos;s Book Publication Services</p>
       <h1>Children&apos;s Book Publication Services That Bring Your Story to Little Readers</h1>
       <p className="lede">From manuscript to printed picture book, we handle age-appropriate editing, illustration coordination, formatting, and distribution — so your children&apos;s story ends up in small hands, not just a drawer.</p>
@@ -83,25 +47,23 @@ export default function Page() {
         <a href="#contact" className="btn btn--primary">Get a Free Consultation <svg><use href="#i-arrow-right"></use></svg></a>
         <Link href="/case-studies" className="btn btn--ghost-dark">See Our Work</Link>
       </div>
-      <p className="svc-hero__note"><strong>Full children&apos;s publishing support</strong>From manuscript to print-ready book</p>
+      <div className="hero-trust">
+        <p className="hero-trust-text">
+          <strong>Full children&apos;s publishing support</strong>From manuscript to print-ready book
+        </p>
+      </div>
     </div>
-    <div className="svc-hero__visual">
-      <figure>
-        <div aria-hidden="true" className="spread">
-          <div className="spread__art"></div>
-          <div className="spread__text">
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
+
+    <div className="hero-visual">
+      <div className="hero-art">
+        <div className="hero-art__blob" aria-hidden="true"></div>
+        <div className="hero-art__book" aria-hidden="true">
+          <svg><use href="#i-heart" style={{color: "var(--orange-dark)"}}></use></svg>
         </div>
-        <ul className="spread__chips">
-          <li>Ages 0-12</li>
-          <li>Print + eBook</li>
-          <li>Read-aloud pacing</li>
-        </ul>
-        <figcaption>Illustrative picture-book layout</figcaption>
-      </figure>
+        <div className="float-card float-card--1"><svg><use href="#i-book-open"></use></svg><span>Print<small>Print + eBook formats</small></span></div>
+        <div className="float-card float-card--2"><svg><use href="#i-heart"></use></svg><span>Read-Aloud<small>Pacing that works aloud</small></span></div>
+        <div className="float-card float-card--3"><svg><use href="#i-shield"></use></svg><span>100%<small>Author-Owned Rights</small></span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -147,18 +109,6 @@ export default function Page() {
         <a href="#contact" className="btn btn--ghost-dark">Get a Custom Quote</a>
       </div>
     </div>
-  </div>
-</section>
-
-{/*============================ Age bands (interactive) ============================ */}
-<section className="section section--cream" id="age-bands">
-  <div className="container">
-    <div className="section-head center">
-      <p className="eyebrow">Know Your Reader</p>
-      <h2>Every Age Band Has Its Own Rules</h2>
-      <p className="lede">Choose an age band to see how a children&apos;s book is shaped for it.</p>
-    </div>
-    <DetailTabs items={AGE_BANDS} label="Age band" />
   </div>
 </section>
 
